@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerListener {
-    static final int PORT = 4810;
+    static final int PORT = 4820;
 
     public void start(){
         ServerSocket serverSocket = null;

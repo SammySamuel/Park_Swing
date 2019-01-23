@@ -1,8 +1,9 @@
 package Core;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Atrakcje {
+public class Atrakcje implements Serializable {
      int id_atrakcji ;
     String nazwa_atrakcji ;
     Date data_otwarcia ;

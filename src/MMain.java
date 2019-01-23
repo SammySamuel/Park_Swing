@@ -8,9 +8,10 @@ import java.util.Date;
 public class MMain {
     public static void main(String[] args){
         System.out.println("dziadostwo pierdolone i taki chuj jak słonia nos");
-        Pracownik pr = new Pracownik(1,"chuj","chuj","chuj","chuj",2);
-        Client client = new Client("localhost",4810);
+        Pracownik pr = new Pracownik(2003,"chuj","chuj","chuj","chuj",2);
+        Client client = new Client("localhost",4820);
         ClientManager clientManager = new ClientManager();
+
         ClientManager.clientSender.sendToServer(ServerOperation.addPracownik,pr);
         Pracownik pracownik = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,2002);
         System.out.println(pracownik.getImie());

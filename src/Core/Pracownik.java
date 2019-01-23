@@ -1,6 +1,8 @@
 package Core;
 
-public class Pracownik {
+import java.io.Serializable;
+
+public class Pracownik implements Serializable {
     int id;
     String login;
     String imie;

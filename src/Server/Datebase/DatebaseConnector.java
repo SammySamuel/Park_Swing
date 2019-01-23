@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatebaseConnector {
-    static String DB_URL = "jdbc:oracle:thin:@localhost:1521/xe";
+    static String DB_URL = "jdbc:oracle:thin:@68.183.221.215:1521:DB11G";
     static Statement stmt = null;
     static java.sql.Connection conn = null;
     static ResultSet rs;
 
-    static String USER = "hr";
-    static String PASSWORD = "hr";
+    static String USER = "Admin";
+    static String PASSWORD = "Admin";
 
 
     public static void connect(){
