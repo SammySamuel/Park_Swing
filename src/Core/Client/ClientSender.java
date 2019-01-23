@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class ClientSender {
+public class ClientSender  {
     ObjectInputStream objectInputStream;
     ObjectOutputStream objectOutputStream;
 
@@ -18,7 +18,6 @@ public class ClientSender {
         try {
             objectOutputStream.writeObject(serverOperation.toString());
             objectOutputStream.writeObject(object);
-
 
             return objectInputStream.readObject();
         } catch (IOException e) {

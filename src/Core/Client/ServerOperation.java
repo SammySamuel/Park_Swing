@@ -5,5 +5,5 @@ public enum ServerOperation {
     addPracownik,
     getPracownik,
     addAttraction,
-    getAttraction
+    gettPracownik, getSPracownik, getAttraction
 }

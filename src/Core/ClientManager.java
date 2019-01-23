@@ -9,7 +9,7 @@ public class ClientManager {
 
     public ClientManager(){
 
-        client = new Client("localhost",4820);
+        client = new Client("localhost",4821);
         clientSender =client.getClientServer();
     }
 }

@@ -71,6 +71,17 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+
+            case getSPracownik:
+                String login = (String) object;
+                System.out.println((String) object);
+
+                try {
+                    objectOutputStream.writeObject(DataManager.getSPracownik(login));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             case addAttraction :
                 Atrakcje atrkacja= (Atrakcje) object;
                 DataManager.addAttraction(atrkacja);
