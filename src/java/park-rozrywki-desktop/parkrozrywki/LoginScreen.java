@@ -56,6 +56,7 @@ public class LoginScreen extends JFrame implements ActionListener {
 
        tfUsername = new JTextField();
        tfUsername.setBounds(80,180,200,42);
+       String user=tfUsername.getText();
        frame.add(tfUsername);
 
        lusername = new JLabel();
