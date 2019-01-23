@@ -77,9 +77,17 @@ public class LoginScreen extends JFrame implements ActionListener {
                 pracownik = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getSPracownik,(Object) lancuch);
 
                 if(pracownik == null){
-                    System.out.println("!!!Wrong login or password!!!");
+                    JOptionPane.showMessageDialog(null, "!!!Wrong login or password!!!", "Notyfikator", JOptionPane.PLAIN_MESSAGE);
                 } else {
-                    new AdminScreen();
+                    if(pracownik.getIdTyp()==1){
+                        new AdminScreen();
+                    }else if(pracownik.getIdTyp()==2){
+                        new ManagerScreen();
+                    }else if(pracownik.getIdTyp()==3){
+                        new ServiceWorkerScreen();
+                    }else
+                        new TechnicalsScreen();
+
                     frame.dispose();
                 }
 

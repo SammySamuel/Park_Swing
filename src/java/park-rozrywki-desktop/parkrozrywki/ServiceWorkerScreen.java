@@ -39,7 +39,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 JOptionPane.showMessageDialog(null, "Zostales wylogowany z konta pracownika obsługi", "Notyfikator", JOptionPane.PLAIN_MESSAGE);
-                new AdminScreen();
+                new LoginScreen();
                 frame.dispose();
             }
         });

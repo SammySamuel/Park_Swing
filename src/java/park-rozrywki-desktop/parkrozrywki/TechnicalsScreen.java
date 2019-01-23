@@ -39,7 +39,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 JOptionPane.showMessageDialog(null, "Zostales wylogowany z konta ", "Notyfikator", JOptionPane.PLAIN_MESSAGE);
-                new AdminScreen();
+                new LoginScreen();
                 frame.dispose();
             }
         });
