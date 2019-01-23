@@ -39,6 +39,7 @@ public class AdminScreen extends JFrame implements ActionListener{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 JOptionPane.showMessageDialog(null, "Zostales wylogowany z konta administratora", "Notyfikator", JOptionPane.PLAIN_MESSAGE);
+                new LoginScreen();
                 frame.dispose();
             }
         });
