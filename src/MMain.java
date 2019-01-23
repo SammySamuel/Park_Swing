@@ -1,3 +1,4 @@
+import Core.Client.Client;
 import Core.Client.ServerOperation;
 import Core.ClientManager;
 import Core.Pracownik;
@@ -10,7 +11,10 @@ public class MMain {
         Pracownik pr = new Pracownik(1,"chuj","chuj","chuj","chuj",2);
 
 
-        Pracownik pracownik = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,1);
-        System.out.println(pr.getImie());
+        Client client = new Client("localhost",4810);
+        ClientManager clientManager = new ClientManager();
+        clientManager.clientSender.sendToServer(ServerOperation.addPracownik,pr);
+        Pracownik pracownik = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,2002);
+        System.out.println(pracownik.getImie());
     }
 }
