@@ -6,15 +6,17 @@ import Core.Pracownik;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class DataManager {
 
     public static void addPracownik(Pracownik pracownik){
-        String sql = ("INSERT INTO PRACOWNIK (id_pracownika,login,imie,pass,nazwisko,id_typ_pracownika)  VALUES ("
-                + pracownik.getId()+","
-                +pracownik.getLogin()+","
-                +pracownik.getImie()+","
-                +pracownik.getNazwisko()+","
+        String sql = ("INSERT INTO Pracownik (id_pracownika,login,imie,pass,nazwisko,id_typ_pracownika)  VALUES ("
+                + pracownik.getId()+",'"
+                +pracownik.getLogin()+"','"
+                +pracownik.getImie()+"','"
+                +pracownik.getPass()+"','"
+                +pracownik.getNazwisko()+"',"
                 +pracownik.getIdTyp()+")"
         );
 
@@ -45,11 +47,12 @@ public class DataManager {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void addAttraction(Atrakcje attraction)
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String sql = ("INSERT INTO Atrakcje (id_atrakcji,nazwa_atrakcji,data_otwarcia,data_zamkniecia,id_cennika)  VALUES ("
                 + attraction.getId_atrakcji()+","
                 +attraction.getNazwa_atrakcji()+","
-                +attraction.getData_otwarcia()+","
-                +attraction.getData_zamkniecia()+","
+                +sdf.format(attraction.getData_otwarcia())+","
+                +sdf.format(attraction.getData_zamkniecia())+","
                 +attraction.getId_cennika()+")"
         );
 

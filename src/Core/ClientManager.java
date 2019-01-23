@@ -8,7 +8,7 @@ public class ClientManager {
     public static Client client;
 
     public ClientManager(){
-        System.out.println("68.183.221.215");
+
         client = new Client("localhost",4820);
         clientSender =client.getClientServer();
     }
