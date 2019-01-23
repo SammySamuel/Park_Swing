@@ -49,10 +49,10 @@ public class DataManager {
     {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String sql = ("INSERT INTO Atrakcje (id_atrakcji,nazwa_atrakcji,data_otwarcia,data_zamkniecia,id_cennika)  VALUES ("
-                + attraction.getId_atrakcji()+","
-                +attraction.getNazwa_atrakcji()+","
-                +sdf.format(attraction.getData_otwarcia())+","
-                +sdf.format(attraction.getData_zamkniecia())+","
+                + attraction.getId_atrakcji()+",'"
+                +attraction.getNazwa_atrakcji()+"','"
+                +sdf.format(attraction.getData_otwarcia())+"','"
+                +sdf.format(attraction.getData_zamkniecia())+"',"
                 +attraction.getId_cennika()+")"
         );
 
@@ -61,6 +61,7 @@ public class DataManager {
 
     public  static  Object getAttraction(int id_atrakcji)
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String sql = "SELECT * FROM Atrakcje WHERE id_atrakcji = " + id_atrakcji + "";
         ResultSet result=DatebaseConnector.getResultSet(sql);
         Atrakcje atrakcja = null;
@@ -70,12 +71,15 @@ public class DataManager {
             atrakcja=new Atrakcje(
                     result.getInt("id_atrakcji"),
                     result.getString("nazwa_atrakcji"),
-                    result.getDate("data_otwarcia"),
-                    result.getDate(" data_zamkniecia"),
+                    sdf.parse(result.getString("data_otwarcia")),
+                    sdf.parse(result.getString(" data_zamkniecia")),
                     result.getInt("id_cennika"));
         }catch (SQLException sqlex)
         {
             sqlex.printStackTrace();
+        }catch (ParseException pe)
+        {
+            pe.printStackTrace();
         }
         return atrakcja;
     }

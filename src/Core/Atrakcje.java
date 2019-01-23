@@ -1,7 +1,7 @@
 package Core;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Atrakcje implements Serializable {
      int id_atrakcji ;
@@ -17,6 +17,9 @@ public class Atrakcje implements Serializable {
         this.data_otwarcia=data_otwarcia;
         this.data_zamkniecia=data_zamkniecia;
         this.id_cennika=id_cennika;
+    }
+
+    public Atrakcje(int id_atrakcji, String nazwa_atrakcji, Date data_otwarcia, int id_cennika) {
     }
 
     public int getId_atrakcji() {
