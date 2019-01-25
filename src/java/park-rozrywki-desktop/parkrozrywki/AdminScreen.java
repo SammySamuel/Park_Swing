@@ -54,6 +54,7 @@ public class AdminScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                new NewUserScreen();
                 frame.dispose();
             }
         });
