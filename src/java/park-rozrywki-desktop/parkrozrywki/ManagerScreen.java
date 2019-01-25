@@ -23,6 +23,8 @@ public class ManagerScreen extends JFrame implements ActionListener{
     private JButton checkRaports;
     /** zmienna typu JLabel - tlo programu */
     protected JLabel background;
+    /** ikonka programu */
+    ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     ManagerScreen(){
 
@@ -81,6 +83,7 @@ public class ManagerScreen extends JFrame implements ActionListener{
         frame.setVisible(true);
         frame.setSize(width,height);
         frame.setResizable(false);
+        frame.setIconImage(icon.getImage());
 
     }
 

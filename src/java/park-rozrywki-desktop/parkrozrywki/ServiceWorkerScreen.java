@@ -23,6 +23,8 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
     private JButton reportDamage;
     /** zmienna typu JLabel - tlo programu */
     protected JLabel background;
+    /** ikonka programu */
+    ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     ServiceWorkerScreen(){
 
@@ -82,6 +84,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
         frame.setVisible(true);
         frame.setSize(width,height);
         frame.setResizable(false);
+        frame.setIconImage(icon.getImage());
 
     }
 

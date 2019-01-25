@@ -15,6 +15,8 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
     static final int width = 400;
     /** zmienna typu static final int, okresla wysokosc okna */
     static final int height = 500;
+    /** ikonka programu */
+    ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     private JButton btnLogin;
     private JButton checkRaport;
@@ -95,6 +97,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
         frame.setVisible(true);
         frame.setSize(width,height);
         frame.setResizable(false);
+        frame.setIconImage(icon.getImage());
 
     }
 

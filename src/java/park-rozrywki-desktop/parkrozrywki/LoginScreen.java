@@ -31,6 +31,8 @@ public class LoginScreen extends JFrame implements ActionListener {
     private JLabel lusername;
     /** zmienna typu JLable - wyswietlajaca 'password' */
     private JLabel lpassword;
+    /** ikonka programu */
+    ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     Pracownik pracownik = null;
 
@@ -107,7 +109,7 @@ public class LoginScreen extends JFrame implements ActionListener {
         frame.setVisible(true);
         frame.setSize(width, height);
         frame.setResizable(false);
-        // frame.getContentPane().setBackground(new Color(234,234,234));
+        frame.setIconImage(icon.getImage());
     }
 
     @Override

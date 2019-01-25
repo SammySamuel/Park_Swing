@@ -16,6 +16,8 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
     static final int height = 600;
     /** zmienna typu JButton odpowiadajacy za sfinalizowanie dodawania nowej atrakcji */
     private JButton btnAdd;
+    /** zmienna typu JButton odpowiadajacy za powrot do poprzedniego menu */
+    private JButton btnReturn;
     /** prywatna zmienna typu JTextField - przyjmuje nazwe atrakcji */
     private JTextField attractionName;
     /** prywatna zmienna typu JTextField - przyjmuje cene biletu solo*/
@@ -38,6 +40,8 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
     private JLabel jlEndDate;
     /** prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600*/
     protected JLabel background;
+    /** ikonka programu */
+    ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     NewAttractionScreen(){
 
@@ -45,16 +49,16 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         attractionName = new JTextField();
-        attractionName.setBounds(170, 160, 200, 40);
+        attractionName.setBounds(170, 170, 200, 40);
         frame.add(attractionName);
 
         jlAttractionName = new JLabel();
         jlAttractionName.setText("Nazwa atrakcji:");
-        jlAttractionName.setBounds(20,160,200,40);
+        jlAttractionName.setBounds(20,170,200,40);
         frame.add(jlAttractionName);
 
         soloPrice = new JTextField();
-        soloPrice.setBounds(170, 210, 200, 40);
+        soloPrice.setBounds(170, 220, 200, 40);
         /*soloPrice.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -78,39 +82,39 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
         jlSoloPrice = new JLabel();
         jlSoloPrice.setText("Cena biletu grupowego:");
-        jlSoloPrice.setBounds(20,210,200,40);
+        jlSoloPrice.setBounds(20,220,200,40);
         frame.add(jlSoloPrice);
 
         groupPrice = new JTextField();
-        groupPrice.setBounds(170, 260, 200, 40);
+        groupPrice.setBounds(170, 270, 200, 40);
         frame.add(groupPrice);
 
         jlGroupPrice = new JLabel();
         jlGroupPrice.setText("Cena biletu pojedynczego:");
-        jlGroupPrice.setBounds(20,260,200,40);
+        jlGroupPrice.setBounds(20,270,200,40);
         frame.add(jlGroupPrice);
 
         startDate = new JTextField();
-        startDate.setBounds(170, 310, 200, 40);
+        startDate.setBounds(170, 320, 200, 40);
         frame.add(startDate);
 
         jlStartDate = new JLabel();
         jlStartDate.setText("Data rozpoczęcia:");
-        jlStartDate.setBounds(20,310,200,40);
+        jlStartDate.setBounds(20,320,200,40);
         frame.add(jlStartDate);
 
         endDate = new JTextField();
-        endDate.setBounds(170, 360, 200, 40);
+        endDate.setBounds(170, 370, 200, 40);
         frame.add(endDate);
 
         jlEndDate = new JLabel();
         jlEndDate.setText("Data zakończenia:");
-        jlEndDate.setBounds(20,360,200,40);
+        jlEndDate.setBounds(20,370,200,40);
         frame.add(jlEndDate);
 
 
-        btnAdd = new JButton((new ImageIcon("src/resources/img/btnAdd.png")));
-        btnAdd.setBounds(100,450,160,56);
+        btnAdd = new JButton(new ImageIcon("src/resources/img/btnAdd.png"));
+        btnAdd.setBounds(20, 450, 160, 56);
         btnAdd.setBorderPainted(false);
         btnAdd.setContentAreaFilled(false);
         btnAdd.addActionListener(this);
@@ -118,11 +122,25 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                JOptionPane.showMessageDialog(null, "Nowa atrakcja  została pomyślnie dodana!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
         });
         frame.add(btnAdd);
+
+        btnReturn = new JButton(new ImageIcon("src/resources/img/btnReturn.png"));
+        btnReturn.setBounds(210, 450, 160, 56);
+        btnReturn.setBorderPainted(false);
+        btnReturn.setContentAreaFilled(false);
+        btnReturn.addActionListener(this);
+        btnReturn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                new AdminScreen();
+            }});
+        frame.add(btnReturn);
 
 
         background = new JLabel(new ImageIcon("src/resources/img/background400x600.png"));
@@ -133,6 +151,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
         frame.setVisible(true);
         frame.setSize(width,height);
         frame.setResizable(false);
+        frame.setIconImage(icon.getImage());
 
     }
 
