@@ -13,45 +13,26 @@ import java.awt.event.MouseEvent;
 
 public class LoginScreen extends JFrame implements ActionListener {
 
-    /**
-     * glowny screen - logowanie do panelu admina
-     */
+    /** glowny screen - logowanie do panelu admina */
     JFrame frame = new JFrame("Panel administracyjny");
-    /**
-     * zmienna typu static final int, okresla szerrokosc okna
-     */
+    /** zmienna typu static final int, okresla szerrokosc okna     */
     static final int width = 400;
-    /**
-     * zmienna typu static final int, okresla wysokosc okna
-     */
+    /** zmienna typu static final int, okresla wysokosc okna */
     static final int height = 500;
-    /**
-     * zmienna typu Jbutton - logowanie
-     */
+    /** zmienna typu Jbutton - logowanie  */
     private JButton btnLogin;
-    /**
-     * zmienna typu Jbutton - logo
-     */
+    /** zmienna typu Jbutton - logo */
     private JButton btnLogo;
-    /**
-     * pole tekstowe, w ktorym miejscu uzytkownik powinien wpisac swoj login
-     */
+    /** pole tekstowe, w ktorym miejscu uzytkownik powinien wpisac swoj login     */
     private JTextField tfUsername;
-    /**
-     * pole tekstowe typu JpasswordField, w ktorym uzytkownik wpisuje swoje haslo do konta, kazdy znak jest widoczny na ekranie jako gwiazdka co ma na celu ukrywanie hasla
-     */
+    /** pole tekstowe typu JpasswordField, w ktorym uzytkownik wpisuje swoje haslo do konta, kazdy znak jest widoczny na ekranie jako gwiazdka co ma na celu ukrywanie hasla*/
     private JPasswordField pfPassword;
-    /**
-     * zmienna typu JLable - wyswietlajaca 'username'
-     */
+    /** zmienna typu JLable - wyswietlajaca 'username'  */
     private JLabel lusername;
-    /**
-     * zmienna typu JLable - wyswietlajaca 'password'
-     */
+    /** zmienna typu JLable - wyswietlajaca 'password' */
     private JLabel lpassword;
 
     Pracownik pracownik = null;
-
 
     LoginScreen() {
 
@@ -77,10 +58,11 @@ public class LoginScreen extends JFrame implements ActionListener {
                 pracownik = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getSPracownik,(Object) lancuch);
 
                 if(pracownik == null){
-                    JOptionPane.showMessageDialog(null, "!!!Wrong login or password!!!", "Notyfikator", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Haslo lub nazwa uzytkownika jest nieprawidlowa", "Notyfikator", JOptionPane.ERROR_MESSAGE);
                 } else {
                     if(pracownik.getIdTyp()==1){
                         new AdminScreen();
+                        JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta administora", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                     }else if(pracownik.getIdTyp()==2){
                         new ManagerScreen();
                     }else if(pracownik.getIdTyp()==3){

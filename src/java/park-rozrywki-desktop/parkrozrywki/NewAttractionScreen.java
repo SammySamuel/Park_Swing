@@ -14,21 +14,29 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
     static final int width = 400;
     /** zmienna typu static final int, okresla wysokosc okna */
     static final int height = 600;
-
+    /** zmienna typu JButton odpowiadajacy za sfinalizowanie dodawania nowej atrakcji */
     private JButton btnAdd;
-
+    /** prywatna zmienna typu JTextField - przyjmuje nazwe atrakcji */
     private JTextField attractionName;
+    /** prywatna zmienna typu JTextField - przyjmuje cene biletu solo*/
     private JTextField soloPrice;
+    /** prywatna zmienna typu JTextField - przyjmuje cene biletu grupowego */
     private JTextField groupPrice;
+    /** prywatna zmienna typu JTextField - przyjmuje date rozpoczecia */
     private JTextField startDate;
+    /** prywatna zmienna typu JTextField - przyjmuje date zakonczenia */
     private JTextField endDate;
-
+    /** prywatna zmienna typu JLabel - nazwa atrakcji */
     private JLabel jlAttractionName;
+    /** prywatna zmienna typu JLabel - cena biletu pojedynczego */
     private JLabel jlSoloPrice;
+    /** prywatna zmienna typu JLabel - cena biletu grupowego */
     private JLabel jlGroupPrice;
+    /** prywatna zmienna typu JLabel - data rozpoczecia*/
     private JLabel jlStartDate;
+    /** prywatna zmienna typu JLabel - data zkonczenia*/
     private JLabel jlEndDate;
-
+    /** prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600*/
     protected JLabel background;
 
     NewAttractionScreen(){
