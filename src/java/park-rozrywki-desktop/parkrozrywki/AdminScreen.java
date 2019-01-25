@@ -24,6 +24,8 @@ public class AdminScreen extends JFrame implements ActionListener{
     /** zmienna typu JLabel - tlo programu */
     protected JLabel background;
 
+
+
     AdminScreen(){
 
         frame.setLayout(null);
@@ -82,6 +84,7 @@ public class AdminScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                NewAttractionScreen();
                 frame.dispose();
             }
         });
