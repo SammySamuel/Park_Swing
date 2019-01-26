@@ -1,3 +1,4 @@
+import Core.Atrakcje;
 import Core.Client.Client;
 import Core.Client.ServerOperation;
 import Core.ClientManager;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class NewPlanScreen extends JFrame implements ActionListener
 {
     ArrayList<Pracownik> pracownicy;
+    ArrayList<Atrakcje> atrakcjes;
     String[] stanowisko={"Obługa atrkacji","Kasjer"};
     JFrame frame = new JFrame("Eleden | Tworzenie planów");
     static final int width = 400;
@@ -43,6 +45,13 @@ public class NewPlanScreen extends JFrame implements ActionListener
             i++;
             pr[i] = new String(p.getLogin());
         }
+        loadListAtraction();
+        String[] atr = new String[atrakcjes.size()];
+        int j = -1;
+        for (Atrakcje a : atrakcjes) {
+            j++;
+            atr[j] = new String(a.getNazwa_atrakcji());
+        }
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -65,7 +74,7 @@ public class NewPlanScreen extends JFrame implements ActionListener
         lStanowisko.setBounds(20,220,200,40);
         frame.add(lStanowisko);
 
-        cAtrakcja=new JComboBox();
+        cAtrakcja=new JComboBox(atr);
         cAtrakcja.setBounds(170,270,200,40);
         cAtrakcja.addActionListener(this);
         frame.add(cAtrakcja);
@@ -126,6 +135,13 @@ public class NewPlanScreen extends JFrame implements ActionListener
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());
 
+    }
+
+    void loadListAtraction() {
+        Client client = new Client("localhost", 4821);
+        ClientManager clientManager = new ClientManager();
+
+        atrakcjes = (ArrayList<Atrakcje>) ClientManager.clientSender.sendToServer(ServerOperation.getAttractionToList, atrakcjes);
     }
     void loadPracownicy(){
         Client client = new Client("localhost",4821);
