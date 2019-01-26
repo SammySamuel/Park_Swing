@@ -7,7 +7,12 @@ public enum ServerOperation {
     addAttraction,
     getSPracownik,
     getAttraction,
+    howManyPracownik,
+    getPracownikToList,
+    removeUserFromBase,
     getRaport,
-    howManyPracownik, getPracownikToList, removeUserFromBase, addRaport
+    addRaport,
+    getPlan,
+    addPlan
 
 }

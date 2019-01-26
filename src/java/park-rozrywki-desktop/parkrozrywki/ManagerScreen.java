@@ -56,6 +56,7 @@ public class ManagerScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                new NewPlanScreen();
                 frame.dispose();
             }
         });
