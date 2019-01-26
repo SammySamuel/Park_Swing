@@ -63,13 +63,16 @@ public class LoginScreen extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Haslo lub nazwa uzytkownika jest nieprawidlowa", "Notyfikator", JOptionPane.ERROR_MESSAGE);
                 } else {
                     if(pracownik.getIdTyp()==1){
-                        new AdminScreen();
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta administora", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
+                        new AdminScreen();
                     }else if(pracownik.getIdTyp()==2){
+                        JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta kierowniczego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new ManagerScreen();
                     }else if(pracownik.getIdTyp()==3){
+                        JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta pracowniczego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new ServiceWorkerScreen();
                     }else
+                        JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta technicznego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new TechnicalsScreen();
 
                     frame.dispose();

@@ -24,6 +24,8 @@ public class EditUserScreen extends JFrame implements ActionListener{
 
     private JComboBox Prac;
 
+    private JLabel lDelete;
+
 
 
     /** prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600*/
@@ -46,8 +48,15 @@ public class EditUserScreen extends JFrame implements ActionListener{
         }
 
 
+        lDelete= new JLabel();
+        lDelete.setText("Select the employee to be removed");
+        lDelete.setFont(lDelete.getFont().deriveFont(16.0f));
+        lDelete.setLocation(75, 150);
+        lDelete.setSize(300, 40);
+        frame.add(lDelete);
+
         Prac = new JComboBox(pr);
-        Prac.setBounds(20,150,400,70);
+        Prac.setBounds(90,220,220,40);
         Prac.addActionListener(this);
         frame.add(Prac);
 
@@ -62,10 +71,10 @@ public class EditUserScreen extends JFrame implements ActionListener{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 removeUserr(pr,Prac.getSelectedIndex());
-                JOptionPane.showMessageDialog(null, " uzytkownik zostal pomyslnie usuniety z systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, " Uzytkownik zostal pomyslnie usuniety z systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
                 frame.setVisible(false);
-                new AdminScreen();
+                new EditUserScreen();
             }
         });
         frame.add(btnAdd);

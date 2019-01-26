@@ -49,7 +49,7 @@ public class NewUserScreen extends JFrame implements ActionListener {
         frame.add(tfName);
 
         lName = new JLabel();
-        lName.setText("Username:");
+        lName.setText("Name:");
         lName.setBounds(20,170,200,40);
         frame.add(lName);
 
