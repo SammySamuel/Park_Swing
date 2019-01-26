@@ -70,6 +70,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                new NewRaportScreen();
                 frame.dispose();
             }
         });
