@@ -3,16 +3,17 @@ package Core;
 import java.io.Serializable;
 import java.util.Date;
 
+
 public class Atrakcje implements Serializable {
      int id_atrakcji ;
     String nazwa_atrakcji ;
     double cena_idywidualna;
     double cena_grupowa;
-    Date data_otwarcia ;
-    Date data_zamkniecia ;
+    String data_otwarcia ;
+    String data_zamkniecia ;
 
 
-    public Atrakcje(int id_atrakcji, String nazwa_atrakcji,double cena_idywidualna,double cena_grupowa,Date data_otwarcia,Date data_zamkniecia)
+    public Atrakcje(int id_atrakcji, String nazwa_atrakcji,double cena_idywidualna,double cena_grupowa,String data_otwarcia,String data_zamkniecia)
     {
         this.id_atrakcji=id_atrakcji;
         this.nazwa_atrakcji=nazwa_atrakcji;
@@ -55,21 +56,21 @@ public class Atrakcje implements Serializable {
         this.cena_grupowa = cena_grupowa;
     }
 
-    public Date getData_otwarcia() {
+    public String getData_otwarcia() {
         return data_otwarcia;
     }
 
-    public void setData_otwarcia(Date data_otwarcia) {
+    public void setData_otwarcia(String data_otwarcia) {
         this.data_otwarcia = data_otwarcia;
     }
 
 
 
-    public Date getData_zamkniecia() {
+    public String getData_zamkniecia() {
         return data_zamkniecia;
     }
 
-    public void setData_zamkniecia(Date data_zamkniecia) {
+    public void setData_zamkniecia(String data_zamkniecia) {
         this.data_zamkniecia = data_zamkniecia;
     }
 

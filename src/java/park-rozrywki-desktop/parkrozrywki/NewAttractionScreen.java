@@ -1,10 +1,21 @@
+import Core.Atrakcje;
+import Core.Client.Client;
+import Core.Client.ServerOperation;
+import Core.ClientManager;
+
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
 public class NewAttractionScreen extends JFrame implements ActionListener{
 
@@ -122,6 +133,9 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                addAtrakctionButton(attractionName.getText(),Double.parseDouble(soloPrice.getText()),Double.parseDouble(groupPrice.getText()),startDate.getText(),endDate.getText());
+
                 JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
@@ -153,6 +167,15 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
         frame.setResizable(false);
         frame.setIconImage(icon.getImage());
 
+    }
+
+
+    public void addAtrakctionButton(String nazwa, double cenaIndywidualna, double cenaGrupowa, String startDate, String closeDate){
+        Client client = new Client("localhost",4821);
+        ClientManager clientManager = new ClientManager();
+
+        Atrakcje atrakcje = new Atrakcje(0,nazwa,cenaIndywidualna,cenaGrupowa,startDate,closeDate);
+        ClientManager.clientSender.sendToServer(ServerOperation.addAttraction,atrakcje);
     }
 
     @Override
