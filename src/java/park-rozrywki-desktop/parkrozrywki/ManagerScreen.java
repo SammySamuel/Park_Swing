@@ -83,6 +83,7 @@ public class ManagerScreen extends JFrame implements ActionListener{
         frame.setVisible(true);
         frame.setSize(width,height);
         frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());
 
     }
