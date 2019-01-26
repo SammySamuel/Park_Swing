@@ -110,7 +110,7 @@ public class EditUserScreen extends JFrame implements ActionListener{
         ClientManager clientManager = new ClientManager();
 
 
-        System.out.println(login);
+        String login = pr[rem];
 
         ClientManager.clientSender.sendToServer(ServerOperation.removeUserFromBase,login);
     }
