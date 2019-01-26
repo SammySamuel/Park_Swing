@@ -1,6 +1,7 @@
 package Server.Datebase;
 
 import Core.Atrakcje;
+import Core.Plany;
 import Core.Pracownik;
 import Core.Raport;
 
@@ -233,5 +234,40 @@ public class DataManager {
         }
         return raport;
     }
+/////////////////////////////////////////////////////////////////////////////////////////
+    public static void addPlan(Plany plan)
+    {
+        String sql=("INSERT INTO Plany (id_planu,id_pracownika,id_stanowiska,id_atrakcji,data) VALUES("
+        +plan.getId_planu()+","
+        +plan.getId_pracownika()+","
+        +plan.getId_stanowiska()+","
+        +plan.getId_atrakcji()+",To_Date('"
+        +plan.getData()+"','YYYY.MM.DD'))"
+        );
 
+        DatebaseConnector.execute(sql);
+    }
+
+    public static Object getPlan(int id_planu)
+    {
+        String sql="Select *From Plany Where id_planu="+id_planu+"";
+        ResultSet result=DatebaseConnector.getResultSet(sql);
+        Plany plan=null;
+        try
+        {
+            result.next();
+            plan=new Plany(
+                    result.getInt("id_planu"),
+                    result.getInt("id_pracownika"),
+                    result.getInt("id_stanowiska"),
+                    result.getInt("id_atrakcji"),
+                    result.getString("Data")
+            );
+        }catch (SQLException sqlex)
+        {
+            sqlex.printStackTrace();
+        }
+
+        return  plan;
+    }
 }
