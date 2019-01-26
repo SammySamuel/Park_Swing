@@ -8,6 +8,6 @@ public enum ServerOperation {
     getSPracownik,
     getAttraction,
     getRaport,
-    addRaport
+    howManyPracownik, getPracownikToList, removeUserFromBase, addRaport
 
 }

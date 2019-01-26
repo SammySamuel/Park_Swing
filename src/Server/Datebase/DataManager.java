@@ -4,17 +4,16 @@ import Core.Atrakcje;
 import Core.Pracownik;
 import Core.Raport;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class DataManager {
 
     public static void addPracownik(Pracownik pracownik) {
         String sql = ("INSERT INTO Pracownik (id_pracownika,login,imie,pass,nazwisko,id_typ_pracownika)  VALUES ("
-                +  "sekwencja_pracownicy.nextval,'"
+                + "sekwencja_pracownicy.nextval,'"
                 + pracownik.getLogin() + "','"
                 + pracownik.getImie() + "','"
                 + pracownik.getPass() + "','"
@@ -72,11 +71,59 @@ public class DataManager {
         return pracownik;
     }
 
+    public static int howManyPracownik() {
+        String sql = "SELECT COUNT(*) AS count from PRACOWNIK";
+        ResultSet resultSet = DatebaseConnector.getResultSet(sql);
+        int ilosc = 0;
+        try {
+            while (resultSet.next()) {
+                ilosc = (resultSet.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ilosc;
+    }
+
+    public static ArrayList<Pracownik> getPracownikToList() {
+        ArrayList<Pracownik> pracownicy = new ArrayList<Pracownik>();
+        int number = howManyPracownik();
+
+        String sql = "SELECT * FROM PRACOWNIK";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+        Pracownik pracownik = null;
+
+        for(int i =0;i<number;i++){
+            try {
+                rs.next();
+                pracownik = new Pracownik(
+                        rs.getInt("ID_PRACOWNIKA"),
+                        rs.getString("LOGIN"),
+                        rs.getString("IMIE"),
+                        rs.getString("PASS"),
+                        rs.getString("NAZWISKO"),
+                        rs.getInt("ID_TYP_PRACOWNIKA")
+                );
+                pracownicy.add(pracownik);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return pracownicy;
+    }
+
+    public static void removeUserFromBase(String index){
+        String sql = "DELETE FROM PRACOWNIK WHERE LOGIN = '" + index+"'";
+        DatebaseConnector.execute(sql);
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void addAttraction(Atrakcje attraction) {
         String sql = ("INSERT INTO Atrakcje (id_atrakcji,nazwa_atrakcji,cena_idywidualna,cena_grupowa,data_otwarcia,data_zamkniecia)  VALUES ("
-                +  "sekwencja_atrakcje.nextval,'"
+                + "sekwencja_atrakcje.nextval,'"
                 + attraction.getNazwa_atrakcji() + "',"
                 + attraction.getCena_idywidualna() + ","
                 + attraction.getCena_grupowa() + " ,To_Date('"
@@ -106,28 +153,29 @@ public class DataManager {
         }
         return atrakcja;
     }
-    public static void addRaport (Raport raport)
-    {
-        String sql=("INSERT INTO Raport(id_raport,id_pracownik,id_atrkacji,id_typ_awarii,opis,status) Values("
-                +raport.getId_raport()+","
-                +raport.getId_pracownika()+","
-                +raport.getId_atrakcji()+","
-                +raport.getId_typ_awarii()+",'"
-                +raport.getOpis()+"','"
-                +raport.getStatus()+"')"
+
+
+    //////////////////////////////////////////////////////////////////
+
+    public static void addRaport(Raport raport) {
+        String sql = ("INSERT INTO Raport(id_raport,id_pracownik,id_atrkacji,id_typ_awarii,opis,status) Values("
+                + raport.getId_raport() + ","
+                + raport.getId_pracownika() + ","
+                + raport.getId_atrakcji() + ","
+                + raport.getId_typ_awarii() + ",'"
+                + raport.getOpis() + "','"
+                + raport.getStatus() + "')"
         );
         DatebaseConnector.execute(sql);
     }
 
-    public static Object getRaport(int id_raport)
-    {
-        String sql="SELECT * FROM Raport WHERE id_raport="+id_raport+"";
-        ResultSet result=DatebaseConnector.getResultSet(sql);
-        Raport raport=null;
-        try
-        {
+    public static Object getRaport(int id_raport) {
+        String sql = "SELECT * FROM Raport WHERE id_raport=" + id_raport + "";
+        ResultSet result = DatebaseConnector.getResultSet(sql);
+        Raport raport = null;
+        try {
             result.next();
-            raport=new Raport(
+            raport = new Raport(
                     result.getInt("id_raport"),
                     result.getInt("id_pracownik"),
                     result.getInt("id_atrakcji"),
@@ -135,8 +183,7 @@ public class DataManager {
                     result.getString("opis"),
                     result.getString("status")
             );
-        }catch (SQLException sqlex)
-        {
+        } catch (SQLException sqlex) {
             sqlex.printStackTrace();
         }
         return raport;

@@ -4,7 +4,9 @@ import Core.Atrakcje;
 import Core.Client.ServerOperation;
 import Core.Pracownik;
 import Server.Datebase.DataManager;
+import Server.Datebase.DatebaseConnector;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 
@@ -81,6 +83,36 @@ public class ConnectedClient extends Thread {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
+
+            case howManyPracownik:
+                try {
+                    objectOutputStream.writeObject(DataManager.howManyPracownik());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case getPracownikToList:
+                Pracownik[] pracownicy = (Pracownik[]) object;
+
+                try {
+                    objectOutputStream.writeObject(DataManager.getPracownikToList());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case removeUserFromBase:
+                String index = (String) object;
+
+                DataManager.removeUserFromBase(index);
+                try {
+                    objectOutputStream.writeObject("nic");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
 
             case addAttraction :
                 Atrakcje atrkacja= (Atrakcje) object;
