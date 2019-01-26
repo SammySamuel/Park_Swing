@@ -2,8 +2,9 @@ package Core.Client;
 
 public enum ServerOperation {
     disconnect,
-    addPracownik, getPracownik,getSPracownik,howManyPracownik,getPracownikToList, removeUserFromBase,
-    addAttraction, getAttraction,getAttractionToList,
+    addPracownik, getPracownik, getSPracownik, howManyPracownik, getPracownikToList, removeUserFromBase,
+    addAttraction, getAttraction, getAttractionToList,
     getRaport, addRaport,
+    addPlan,
 
 }

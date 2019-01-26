@@ -9,7 +9,7 @@ import java.net.Socket;
 public class ServerListener {
     static final int PORT = 4821;
 
-    public void start(){
+    public void start() {
         ServerSocket serverSocket = null;
         Socket socket = null;
         DatebaseConnector datebaseConnector = new DatebaseConnector();
@@ -20,7 +20,7 @@ public class ServerListener {
             e.printStackTrace();
         }
 
-        while(true){
+        while (true) {
             try {
                 System.out.println("Oczekuje");
                 socket = serverSocket.accept();

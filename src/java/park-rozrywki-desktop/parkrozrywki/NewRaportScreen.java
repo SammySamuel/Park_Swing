@@ -145,18 +145,18 @@ public class NewRaportScreen extends JFrame implements ActionListener {
         ClientManager clientManager = new ClientManager();
 
         String Atr = atr[a];
-        int idAtr  = 0;
+        int idAtr = 0;
 
         for (Atrakcje at : atrakcjes) {
-            if(at.getNazwa_atrakcji().equals(Atr)==true)
+            if (at.getNazwa_atrakcji().equals(Atr) == true)
                 idAtr = at.getId_atrakcji();
         }
 
-        Raport raport = new Raport(0, pracownik.getIdTyp(),idAtr,typ,opis,stat);
+        Raport raport = new Raport(0, pracownik.getIdTyp(), idAtr, typ, opis, stat);
 
         //System.out.println(raport.getId_pracownika()+"  "+raport.getId_atrakcji()+"  "+raport.getId_typ_awarii()+"  "+raport.getOpis()+"  "+raport.getStatus());
 
-        ClientManager.clientSender.sendToServer(ServerOperation.addRaport,raport);
+        ClientManager.clientSender.sendToServer(ServerOperation.addRaport, raport);
 
     }
 }

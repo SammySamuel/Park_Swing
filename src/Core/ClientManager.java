@@ -7,9 +7,9 @@ public class ClientManager {
     public static ClientSender clientSender;
     public static Client client;
 
-    public ClientManager(){
+    public ClientManager() {
 
-        client = new Client("localhost",4821);
-        clientSender =client.getClientServer();
+        client = new Client("localhost", 4821);
+        clientSender = client.getClientServer();
     }
 }

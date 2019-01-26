@@ -11,44 +11,78 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class NewAttractionScreen extends JFrame implements ActionListener{
+public class NewAttractionScreen extends JFrame implements ActionListener {
 
-    /** glowny screen - logowanie do panelu admina */
+    /**
+     * glowny screen - logowanie do panelu admina
+     */
     JFrame frame = new JFrame("Eleden | Dodawanie nowej atrakcji");
-    /** zmienna typu static final int, okresla szerrokosc okna */
+    /**
+     * zmienna typu static final int, okresla szerrokosc okna
+     */
     static final int width = 400;
-    /** zmienna typu static final int, okresla wysokosc okna */
+    /**
+     * zmienna typu static final int, okresla wysokosc okna
+     */
     static final int height = 600;
-    /** zmienna typu JButton odpowiadajacy za sfinalizowanie dodawania nowej atrakcji */
+    /**
+     * zmienna typu JButton odpowiadajacy za sfinalizowanie dodawania nowej atrakcji
+     */
     private JButton btnAdd;
-    /** zmienna typu JButton odpowiadajacy za powrot do poprzedniego menu */
+    /**
+     * zmienna typu JButton odpowiadajacy za powrot do poprzedniego menu
+     */
     private JButton btnReturn;
-    /** prywatna zmienna typu JTextField - przyjmuje nazwe atrakcji */
+    /**
+     * prywatna zmienna typu JTextField - przyjmuje nazwe atrakcji
+     */
     private JTextField attractionName;
-    /** prywatna zmienna typu JTextField - przyjmuje cene biletu solo*/
+    /**
+     * prywatna zmienna typu JTextField - przyjmuje cene biletu solo
+     */
     private JTextField soloPrice;
-    /** prywatna zmienna typu JTextField - przyjmuje cene biletu grupowego */
+    /**
+     * prywatna zmienna typu JTextField - przyjmuje cene biletu grupowego
+     */
     private JTextField groupPrice;
-    /** prywatna zmienna typu JTextField - przyjmuje date rozpoczecia */
+    /**
+     * prywatna zmienna typu JTextField - przyjmuje date rozpoczecia
+     */
     private JTextField startDate;
-    /** prywatna zmienna typu JTextField - przyjmuje date zakonczenia */
+    /**
+     * prywatna zmienna typu JTextField - przyjmuje date zakonczenia
+     */
     private JTextField endDate;
-    /** prywatna zmienna typu JLabel - nazwa atrakcji */
+    /**
+     * prywatna zmienna typu JLabel - nazwa atrakcji
+     */
     private JLabel jlAttractionName;
-    /** prywatna zmienna typu JLabel - cena biletu pojedynczego */
+    /**
+     * prywatna zmienna typu JLabel - cena biletu pojedynczego
+     */
     private JLabel jlSoloPrice;
-    /** prywatna zmienna typu JLabel - cena biletu grupowego */
+    /**
+     * prywatna zmienna typu JLabel - cena biletu grupowego
+     */
     private JLabel jlGroupPrice;
-    /** prywatna zmienna typu JLabel - data rozpoczecia*/
+    /**
+     * prywatna zmienna typu JLabel - data rozpoczecia
+     */
     private JLabel jlStartDate;
-    /** prywatna zmienna typu JLabel - data zkonczenia*/
+    /**
+     * prywatna zmienna typu JLabel - data zkonczenia
+     */
     private JLabel jlEndDate;
-    /** prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600*/
+    /**
+     * prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600
+     */
     protected JLabel background;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    NewAttractionScreen(){
+    NewAttractionScreen() {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +93,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
         jlAttractionName = new JLabel();
         jlAttractionName.setText("Nazwa atrakcji:");
-        jlAttractionName.setBounds(20,170,200,40);
+        jlAttractionName.setBounds(20, 170, 200, 40);
         frame.add(jlAttractionName);
 
         soloPrice = new JTextField();
@@ -87,7 +121,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
         jlSoloPrice = new JLabel();
         jlSoloPrice.setText("Cena biletu grupowego:");
-        jlSoloPrice.setBounds(20,220,200,40);
+        jlSoloPrice.setBounds(20, 220, 200, 40);
         frame.add(jlSoloPrice);
 
         groupPrice = new JTextField();
@@ -96,7 +130,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
         jlGroupPrice = new JLabel();
         jlGroupPrice.setText("Cena biletu pojedynczego:");
-        jlGroupPrice.setBounds(20,270,200,40);
+        jlGroupPrice.setBounds(20, 270, 200, 40);
         frame.add(jlGroupPrice);
 
         startDate = new JTextField();
@@ -105,7 +139,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
         jlStartDate = new JLabel();
         jlStartDate.setText("Data rozpoczęcia:");
-        jlStartDate.setBounds(20,320,200,40);
+        jlStartDate.setBounds(20, 320, 200, 40);
         frame.add(jlStartDate);
 
         endDate = new JTextField();
@@ -114,7 +148,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
         jlEndDate = new JLabel();
         jlEndDate.setText("Data zakończenia:");
-        jlEndDate.setBounds(20,370,200,40);
+        jlEndDate.setBounds(20, 370, 200, 40);
         frame.add(jlEndDate);
 
 
@@ -128,7 +162,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                addAtrakctionButton(attractionName.getText(),Double.parseDouble(soloPrice.getText()),Double.parseDouble(groupPrice.getText()),startDate.getText(),endDate.getText());
+                addAtrakctionButton(attractionName.getText(), Double.parseDouble(soloPrice.getText()), Double.parseDouble(groupPrice.getText()), startDate.getText(), endDate.getText());
 
                 JOptionPane.showMessageDialog(null, "Nowa atrkacja została dodana ", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 new NewAttractionScreen();
@@ -150,7 +184,8 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
                 super.mouseClicked(e);
                 frame.setVisible(false);
                 new AdminScreen();
-            }});
+            }
+        });
         frame.add(btnReturn);
 
 
@@ -160,7 +195,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
         frame.add(background);
 
         frame.setVisible(true);
-        frame.setSize(width,height);
+        frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());
@@ -168,12 +203,12 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
     }
 
 
-    public void addAtrakctionButton(String nazwa, double cenaIndywidualna, double cenaGrupowa, String startDate, String closeDate){
-        Client client = new Client("localhost",4821);
+    public void addAtrakctionButton(String nazwa, double cenaIndywidualna, double cenaGrupowa, String startDate, String closeDate) {
+        Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
 
-        Atrakcje atrakcje = new Atrakcje(0,nazwa,cenaIndywidualna,cenaGrupowa,startDate,closeDate);
-        ClientManager.clientSender.sendToServer(ServerOperation.addAttraction,atrakcje);
+        Atrakcje atrakcje = new Atrakcje(0, nazwa, cenaIndywidualna, cenaGrupowa, startDate, closeDate);
+        ClientManager.clientSender.sendToServer(ServerOperation.addAttraction, atrakcje);
     }
 
     @Override
@@ -181,13 +216,14 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
     }
 
-    public void warn(){
+    public void warn() {
 
-        if (Integer.parseInt(soloPrice.getText())<=0){
+        if (Integer.parseInt(soloPrice.getText()) <= 0) {
             JOptionPane.showMessageDialog(null,
                     "Error: Please enter number bigger than 0", "Error Massage",
                     JOptionPane.ERROR_MESSAGE);
         }
 
 
-}}
+    }
+}

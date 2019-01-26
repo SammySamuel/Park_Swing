@@ -2,6 +2,7 @@ package Server;
 
 import Core.Atrakcje;
 import Core.Client.ServerOperation;
+import Core.Plany;
 import Core.Pracownik;
 import Core.Raport;
 import Server.Datebase.DataManager;
@@ -54,8 +55,8 @@ public class ConnectedClient extends Thread {
         }
     }
 
-    private synchronized void executeOperation(ServerOperation serverOperation,Object object){
-        switch (serverOperation){
+    private synchronized void executeOperation(ServerOperation serverOperation, Object object) {
+        switch (serverOperation) {
             case addPracownik:
                 Pracownik pracownik = (Pracownik) object;
                 DataManager.addPracownik(pracownik);
@@ -67,7 +68,7 @@ public class ConnectedClient extends Thread {
                 }
                 break;
             case getPracownik:
-                int id =(Integer) object;
+                int id = (Integer) object;
                 try {
                     objectOutputStream.writeObject(DataManager.getPracownik(id));
                 } catch (IOException e) {
@@ -113,24 +114,20 @@ public class ConnectedClient extends Thread {
                 break;
 
 
-            case addAttraction :
-                Atrakcje atrkacja= (Atrakcje) object;
+            case addAttraction:
+                Atrakcje atrkacja = (Atrakcje) object;
                 DataManager.addAttraction(atrkacja);
-                try
-                {
+                try {
                     objectOutputStream.writeObject("cos");
-                }catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
             case getAttraction:
-                int id_atrakcji= (Integer) object;
-                try
-                {
+                int id_atrakcji = (Integer) object;
+                try {
                     objectOutputStream.writeObject(DataManager.getAttraction(id_atrakcji));
-                }catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -145,11 +142,19 @@ public class ConnectedClient extends Thread {
             case addRaport:
                 Raport raport = (Raport) object;
                 DataManager.addRaport(raport);
-                try
-                {
+                try {
                     objectOutputStream.writeObject("cos");
-                }catch (IOException e)
-                {
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case addPlan:
+                Plany plany = (Plany) object;
+                DataManager.addPlan(plany);
+                try {
+                    objectOutputStream.writeObject("cos");
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;

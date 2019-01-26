@@ -1,3 +1,5 @@
+import Core.Pracownik;
+
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.*;
@@ -7,32 +9,48 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
-public class ManagerScreen extends JFrame implements ActionListener{
+public class ManagerScreen extends JFrame implements ActionListener {
 
-    /** glowny screen - logowanie do panelu admina */
+    /**
+     * glowny screen - logowanie do panelu admina
+     */
     JFrame frame = new JFrame("Panel administracyjny");
-    /** zmienna typu static final int, okresla szerrokosc okna */
+    /**
+     * zmienna typu static final int, okresla szerrokosc okna
+     */
     static final int width = 400;
-    /** zmienna typu static final int, okresla wysokosc okna */
+    /**
+     * zmienna typu static final int, okresla wysokosc okna
+     */
     static final int height = 500;
-    /** zmienna typu Jbutton - wylogowywanie */
+    /**
+     * zmienna typu Jbutton - wylogowywanie
+     */
     private JButton btnLogout;
-    /** zmienna typu Jbutton - dodawanie planow */
+    /**
+     * zmienna typu Jbutton - dodawanie planow
+     */
     private JButton addPlans;
-    /** zmienna typu Jbutton - sprawdzanie raportow */
+    /**
+     * zmienna typu Jbutton - sprawdzanie raportow
+     */
     private JButton checkRaports;
-    /** zmienna typu JLabel - tlo programu */
+    /**
+     * zmienna typu JLabel - tlo programu
+     */
     protected JLabel background;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    ManagerScreen(){
+    ManagerScreen(Pracownik pracownik) {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btnLogout = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
-        btnLogout.setBounds(100,370,160,56);
+        btnLogout.setBounds(100, 370, 160, 56);
         btnLogout.setBorderPainted(false);
         btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(this);
@@ -48,7 +66,7 @@ public class ManagerScreen extends JFrame implements ActionListener{
         frame.add(btnLogout);
 
         addPlans = new JButton(new ImageIcon("src/resources/img/btnAddPlans.png"));
-        addPlans.setBounds(100,300,160,56);
+        addPlans.setBounds(100, 300, 160, 56);
         addPlans.setBorderPainted(false);
         addPlans.setContentAreaFilled(false);
         addPlans.addActionListener(this);
@@ -56,14 +74,14 @@ public class ManagerScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                new NewPlanScreen();
+                new NewPlanScreen(pracownik);
                 frame.dispose();
             }
         });
         frame.add(addPlans);
 
         checkRaports = new JButton(new ImageIcon("src/resources/img/btnCheckReports.png"));
-        checkRaports.setBounds(100,230,160,56);
+        checkRaports.setBounds(100, 230, 160, 56);
         checkRaports.setBorderPainted(false);
         checkRaports.setContentAreaFilled(false);
         checkRaports.addActionListener(this);
@@ -82,7 +100,7 @@ public class ManagerScreen extends JFrame implements ActionListener{
         frame.add(background);
 
         frame.setVisible(true);
-        frame.setSize(width,height);
+        frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());

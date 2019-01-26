@@ -10,14 +10,13 @@ public class Raport implements Serializable {
     String opis;
     String status;
 
-    public Raport(int id_raport, int id_pracownika, int id_atrakcji, int id_typ_awarii, String opis, String status)
-    {
-        this.id_raport=id_raport;
-        this.id_pracownika=id_pracownika;
-        this.id_atrakcji=id_atrakcji;
-        this.id_typ_awarii=id_typ_awarii;
-        this.opis=opis;
-        this.status=status;
+    public Raport(int id_raport, int id_pracownika, int id_atrakcji, int id_typ_awarii, String opis, String status) {
+        this.id_raport = id_raport;
+        this.id_pracownika = id_pracownika;
+        this.id_atrakcji = id_atrakcji;
+        this.id_typ_awarii = id_typ_awarii;
+        this.opis = opis;
+        this.status = status;
     }
 
     public int getId_raport() {

@@ -9,15 +9,23 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
-public class TechnicalsScreen extends JFrame implements ActionListener{
+public class TechnicalsScreen extends JFrame implements ActionListener {
 
-    /** glowny screen - logowanie do panelu admina */
+    /**
+     * glowny screen - logowanie do panelu admina
+     */
     JFrame frame = new JFrame("Eleden | Panel TECHNICZNY");
-    /** zmienna typu static final int, okresla szerrokosc okna */
+    /**
+     * zmienna typu static final int, okresla szerrokosc okna
+     */
     static final int width = 400;
-    /** zmienna typu static final int, okresla wysokosc okna */
+    /**
+     * zmienna typu static final int, okresla wysokosc okna
+     */
     static final int height = 500;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     private JButton btnLogin;
@@ -28,13 +36,13 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
 
     protected JLabel background;
 
-    TechnicalsScreen(Pracownik pracownik){
+    TechnicalsScreen(Pracownik pracownik) {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btnLogin = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
-        btnLogin.setBounds(100,370,160,56);
+        btnLogin.setBounds(100, 370, 160, 56);
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
         btnLogin.addActionListener(this);
@@ -50,7 +58,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
         frame.add(btnLogin);
 
         checkRaport = new JButton(new ImageIcon("src/resources/img/btnCheckReports.png"));
-        checkRaport.setBounds(100,300,160,56);
+        checkRaport.setBounds(100, 300, 160, 56);
         checkRaport.setBorderPainted(false);
         checkRaport.setContentAreaFilled(false);
         checkRaport.addActionListener(this);
@@ -64,7 +72,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
         frame.add(checkRaport);
 
         checkDayPlans = new JButton(new ImageIcon("src/resources/img/btnTodayPlans.png"));
-        checkDayPlans.setBounds(100,230,160,56);
+        checkDayPlans.setBounds(100, 230, 160, 56);
         checkDayPlans.setBorderPainted(false);
         checkDayPlans.setContentAreaFilled(false);
         checkDayPlans.addActionListener(this);
@@ -78,7 +86,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
         frame.add(checkDayPlans);
 
         checkWeekPlans = new JButton(new ImageIcon("src/resources/img/btnWeeklyPlans.png"));
-        checkWeekPlans.setBounds(100,160,160,56);
+        checkWeekPlans.setBounds(100, 160, 160, 56);
         checkWeekPlans.setBorderPainted(false);
         checkWeekPlans.setContentAreaFilled(false);
         checkWeekPlans.addActionListener(this);
@@ -97,7 +105,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
         frame.add(background);
 
         frame.setVisible(true);
-        frame.setSize(width,height);
+        frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());

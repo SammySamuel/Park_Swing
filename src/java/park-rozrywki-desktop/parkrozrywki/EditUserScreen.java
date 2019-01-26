@@ -10,7 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class EditUserScreen extends JFrame implements ActionListener{
+public class EditUserScreen extends JFrame implements ActionListener {
 
     ArrayList<Pracownik> pracownicy;
 
@@ -27,28 +27,31 @@ public class EditUserScreen extends JFrame implements ActionListener{
     private JLabel lDelete;
 
 
-
-    /** prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600*/
+    /**
+     * prywatna zmienna typu JLabel - tlo aplikacji, w tym przypadku 400x600
+     */
     protected JLabel background;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    EditUserScreen(){
+    EditUserScreen() {
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         loadPracownicy();
 
-        String[] pr= new String[pracownicy.size()];
+        String[] pr = new String[pracownicy.size()];
 
         int i = -1;
-        for(Pracownik p:pracownicy){
+        for (Pracownik p : pracownicy) {
             i++;
             pr[i] = new String(p.getLogin());
         }
 
 
-        lDelete= new JLabel();
+        lDelete = new JLabel();
         lDelete.setText("Select the employee to be removed");
         lDelete.setFont(lDelete.getFont().deriveFont(16.0f));
         lDelete.setLocation(75, 150);
@@ -56,7 +59,7 @@ public class EditUserScreen extends JFrame implements ActionListener{
         frame.add(lDelete);
 
         Prac = new JComboBox(pr);
-        Prac.setBounds(90,220,220,40);
+        Prac.setBounds(90, 220, 220, 40);
         Prac.addActionListener(this);
         frame.add(Prac);
 
@@ -70,7 +73,7 @@ public class EditUserScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                removeUserr(pr,Prac.getSelectedIndex());
+                removeUserr(pr, Prac.getSelectedIndex());
                 JOptionPane.showMessageDialog(null, " Uzytkownik zostal pomyslnie usuniety z systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
                 frame.setVisible(false);
@@ -90,7 +93,8 @@ public class EditUserScreen extends JFrame implements ActionListener{
                 super.mouseClicked(e);
                 frame.setVisible(false);
                 new AdminScreen();
-            }});
+            }
+        });
         frame.add(btnReturn);
 
         background = new JLabel(new ImageIcon("src/resources/img/background400x600.png"));
@@ -99,29 +103,29 @@ public class EditUserScreen extends JFrame implements ActionListener{
         frame.add(background);
 
         frame.setVisible(true);
-        frame.setSize(width,height);
+        frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());
     }
 
-    void loadPracownicy(){
-        Client client = new Client("localhost",4821);
+    void loadPracownicy() {
+        Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
-        int ilosc = (Integer)ClientManager.clientSender.sendToServer(ServerOperation.howManyPracownik,null);
+        int ilosc = (Integer) ClientManager.clientSender.sendToServer(ServerOperation.howManyPracownik, null);
 
-        pracownicy = (ArrayList<Pracownik>)ClientManager.clientSender.sendToServer(ServerOperation.getPracownikToList,null);
+        pracownicy = (ArrayList<Pracownik>) ClientManager.clientSender.sendToServer(ServerOperation.getPracownikToList, null);
 
     }
 
-    void removeUserr(String[] pr, int rem){
-        Client client = new Client("localhost",4821);
+    void removeUserr(String[] pr, int rem) {
+        Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
 
 
         String login = pr[rem];
 
-        ClientManager.clientSender.sendToServer(ServerOperation.removeUserFromBase,login);
+        ClientManager.clientSender.sendToServer(ServerOperation.removeUserFromBase, login);
     }
 
 

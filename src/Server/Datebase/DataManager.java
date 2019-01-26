@@ -96,7 +96,7 @@ public class DataManager {
         ResultSet rs = DatebaseConnector.getResultSet(sql);
         Pracownik pracownik = null;
 
-        for(int i =0;i<number;i++){
+        for (int i = 0; i < number; i++) {
             try {
                 rs.next();
                 pracownik = new Pracownik(
@@ -117,8 +117,8 @@ public class DataManager {
         return pracownicy;
     }
 
-    public static void removeUserFromBase(String index){
-        String sql = "DELETE FROM PRACOWNIK WHERE LOGIN = '" + index+"'";
+    public static void removeUserFromBase(String index) {
+        String sql = "DELETE FROM PRACOWNIK WHERE LOGIN = '" + index + "'";
         DatebaseConnector.execute(sql);
     }
 
@@ -171,17 +171,17 @@ public class DataManager {
         return ilosc;
     }
 
-    public static ArrayList<Atrakcje> getAttractionToList(){
+    public static ArrayList<Atrakcje> getAttractionToList() {
         ArrayList<Atrakcje> atrakcje = new ArrayList<Atrakcje>();
         int number = howManyAttraction();
 
         String sql = "SELECT * FROM ATRAKCJE";
-        ResultSet rs= DatebaseConnector.getResultSet(sql);
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
         Atrakcje at = null;
 
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
-        for (int i =0;i<number;i++){
+        for (int i = 0; i < number; i++) {
             try {
                 rs.next();
                 at = new Atrakcje(
@@ -234,40 +234,36 @@ public class DataManager {
         }
         return raport;
     }
-/////////////////////////////////////////////////////////////////////////////////////////
-    public static void addPlan(Plany plan)
-    {
-        String sql=("INSERT INTO Plany (id_planu,id_pracownika,id_stanowiska,id_atrakcji,data) VALUES("
-        +plan.getId_planu()+","
-        +plan.getId_pracownika()+","
-        +plan.getId_stanowiska()+","
-        +plan.getId_atrakcji()+",To_Date('"
-        +plan.getData()+"','YYYY.MM.DD'))"
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    public static void addPlan(Plany plan) {
+        String sql = ("INSERT INTO Plany (id_planu,id_pracownika,id_stanowiska,id_atrakcji,data) VALUES(sekwencja_plany.nextval,"
+                + plan.getId_pracownika() + ","
+                + plan.getId_stanowiska() + ","
+                + plan.getId_atrakcji() + ",To_Date('"
+                + plan.getData() + "','YYYY.MM.DD'))"
         );
 
         DatebaseConnector.execute(sql);
     }
 
-    public static Object getPlan(int id_planu)
-    {
-        String sql="Select *From Plany Where id_planu="+id_planu+"";
-        ResultSet result=DatebaseConnector.getResultSet(sql);
-        Plany plan=null;
-        try
-        {
+    public static Object getPlan(int id_planu) {
+        String sql = "Select *From Plany Where id_planu=" + id_planu + "";
+        ResultSet result = DatebaseConnector.getResultSet(sql);
+        Plany plan = null;
+        try {
             result.next();
-            plan=new Plany(
+            plan = new Plany(
                     result.getInt("id_planu"),
                     result.getInt("id_pracownika"),
                     result.getInt("id_stanowiska"),
                     result.getInt("id_atrakcji"),
                     result.getString("Data")
             );
-        }catch (SQLException sqlex)
-        {
+        } catch (SQLException sqlex) {
             sqlex.printStackTrace();
         }
 
-        return  plan;
+        return plan;
     }
 }

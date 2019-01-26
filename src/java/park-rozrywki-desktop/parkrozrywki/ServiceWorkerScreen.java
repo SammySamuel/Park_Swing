@@ -9,32 +9,48 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
-public class ServiceWorkerScreen extends JFrame implements ActionListener{
+public class ServiceWorkerScreen extends JFrame implements ActionListener {
 
-    /** glowny screen - logowanie do panelu admina */
+    /**
+     * glowny screen - logowanie do panelu admina
+     */
     JFrame frame = new JFrame("Eleden | Panel pracowniczy");
-    /** zmienna typu static final int, okresla szerrokosc okna */
+    /**
+     * zmienna typu static final int, okresla szerrokosc okna
+     */
     static final int width = 400;
-    /** zmienna typu static final int, okresla wysokosc okna */
+    /**
+     * zmienna typu static final int, okresla wysokosc okna
+     */
     static final int height = 500;
-    /** zmienna typu Jbutton - wylogowywanie */
+    /**
+     * zmienna typu Jbutton - wylogowywanie
+     */
     private JButton btnLogout;
-    /** zmienna typu Jbutton - sprawdzanie planow */
+    /**
+     * zmienna typu Jbutton - sprawdzanie planow
+     */
     private JButton checkPlans;
-    /** zmienna typu Jbutton - zglaszanie usterki */
+    /**
+     * zmienna typu Jbutton - zglaszanie usterki
+     */
     private JButton reportDamage;
-    /** zmienna typu JLabel - tlo programu */
+    /**
+     * zmienna typu JLabel - tlo programu
+     */
     protected JLabel background;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    ServiceWorkerScreen(Pracownik pracownik){
+    ServiceWorkerScreen(Pracownik pracownik) {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btnLogout = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
-        btnLogout.setBounds(100,370,160,56);
+        btnLogout.setBounds(100, 370, 160, 56);
         btnLogout.setBorderPainted(false);
         btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(this);
@@ -50,7 +66,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
         frame.add(btnLogout);
 
         checkPlans = new JButton(new ImageIcon("src/resources/img/btnCheckPlans.png"));
-        checkPlans.setBounds(100,300,160,56);
+        checkPlans.setBounds(100, 300, 160, 56);
         checkPlans.setBorderPainted(false);
         checkPlans.setContentAreaFilled(false);
         checkPlans.addActionListener(this);
@@ -64,7 +80,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
         frame.add(checkPlans);
 
         reportDamage = new JButton(new ImageIcon("src/resources/img/btnReportDamage.png"));
-        reportDamage.setBounds(100,230,160,56);
+        reportDamage.setBounds(100, 230, 160, 56);
         reportDamage.setBorderPainted(false);
         reportDamage.setContentAreaFilled(false);
         reportDamage.addActionListener(this);
@@ -85,7 +101,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
         frame.add(background);
 
         frame.setVisible(true);
-        frame.setSize(width,height);
+        frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());

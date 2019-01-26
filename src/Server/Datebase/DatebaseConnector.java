@@ -15,12 +15,12 @@ public class DatebaseConnector {
     static String PASSWORD = "Admin";
 
 
-    public static void connect(){
+    public static void connect() {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
 
             System.out.println("Connecting to a select datebase...");
-            conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 
             System.out.println("Connected database successfully...");
 
@@ -35,7 +35,7 @@ public class DatebaseConnector {
         }
     }
 
-    public static void disconnect(){
+    public static void disconnect() {
         try {
             stmt.close();
         } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class DatebaseConnector {
         }//end finally try
     }
 
-    public static ResultSet  getResultSet(String sql) {
+    public static ResultSet getResultSet(String sql) {
         try {
             return stmt.executeQuery(sql);
         } catch (SQLException e) {
@@ -64,7 +64,8 @@ public class DatebaseConnector {
         }
         return null;
     }
-    public static void execute(String sql){
+
+    public static void execute(String sql) {
         try {
             stmt.execute(sql);
         } catch (SQLException e) {

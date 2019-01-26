@@ -9,13 +9,12 @@ public class Plany implements Serializable {
     int id_atrakcji;
     String data;
 
-    public Plany(int id_planu,int id_pracownika, int id_stanowiska, int id_atrakcji, String data)
-    {
-        this.id_planu=id_planu;
-        this.id_pracownika=id_pracownika;
-        this.id_stanowiska=id_stanowiska;
-        this.id_atrakcji=id_atrakcji;
-        this.data=data;
+    public Plany(int id_planu, int id_pracownika, int id_stanowiska, int id_atrakcji, String data) {
+        this.id_planu = id_planu;
+        this.id_pracownika = id_pracownika;
+        this.id_stanowiska = id_stanowiska;
+        this.id_atrakcji = id_atrakcji;
+        this.data = data;
     }
 
     public int getId_planu() {

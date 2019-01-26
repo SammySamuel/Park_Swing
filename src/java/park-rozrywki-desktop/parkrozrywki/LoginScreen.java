@@ -13,25 +13,45 @@ import java.awt.event.MouseEvent;
 
 public class LoginScreen extends JFrame implements ActionListener {
 
-    /** glowny screen - logowanie do panelu admina */
+    /**
+     * glowny screen - logowanie do panelu admina
+     */
     JFrame frame = new JFrame("Panel administracyjny");
-    /** zmienna typu static final int, okresla szerrokosc okna     */
+    /**
+     * zmienna typu static final int, okresla szerrokosc okna
+     */
     static final int width = 400;
-    /** zmienna typu static final int, okresla wysokosc okna */
+    /**
+     * zmienna typu static final int, okresla wysokosc okna
+     */
     static final int height = 500;
-    /** zmienna typu Jbutton - logowanie  */
+    /**
+     * zmienna typu Jbutton - logowanie
+     */
     private JButton btnLogin;
-    /** zmienna typu Jbutton - logo */
+    /**
+     * zmienna typu Jbutton - logo
+     */
     private JButton btnLogo;
-    /** pole tekstowe, w ktorym miejscu uzytkownik powinien wpisac swoj login     */
+    /**
+     * pole tekstowe, w ktorym miejscu uzytkownik powinien wpisac swoj login
+     */
     private JTextField tfUsername;
-    /** pole tekstowe typu JpasswordField, w ktorym uzytkownik wpisuje swoje haslo do konta, kazdy znak jest widoczny na ekranie jako gwiazdka co ma na celu ukrywanie hasla*/
+    /**
+     * pole tekstowe typu JpasswordField, w ktorym uzytkownik wpisuje swoje haslo do konta, kazdy znak jest widoczny na ekranie jako gwiazdka co ma na celu ukrywanie hasla
+     */
     private JPasswordField pfPassword;
-    /** zmienna typu JLable - wyswietlajaca 'username'  */
+    /**
+     * zmienna typu JLable - wyswietlajaca 'username'
+     */
     private JLabel lusername;
-    /** zmienna typu JLable - wyswietlajaca 'password' */
+    /**
+     * zmienna typu JLable - wyswietlajaca 'password'
+     */
     private JLabel lpassword;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
     Pracownik pracownik = null;
@@ -51,27 +71,27 @@ public class LoginScreen extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                Client client = new Client("localhost",4821);
+                Client client = new Client("localhost", 4821);
                 ClientManager clientManager = new ClientManager();
 
                 String password = new String(pfPassword.getPassword());
                 String lancuch = tfUsername.getText() + " " + password;
 
-                pracownik = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getSPracownik,(Object) lancuch);
+                pracownik = (Pracownik) ClientManager.clientSender.sendToServer(ServerOperation.getSPracownik, (Object) lancuch);
 
-                if(pracownik == null){
+                if (pracownik == null) {
                     JOptionPane.showMessageDialog(null, "Haslo lub nazwa uzytkownika jest nieprawidlowa", "Notyfikator", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    if(pracownik.getIdTyp()==1){
+                    if (pracownik.getIdTyp() == 1) {
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta administora", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new AdminScreen();
-                    }else if(pracownik.getIdTyp()==2){
+                    } else if (pracownik.getIdTyp() == 2) {
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta kierowniczego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
-                        new ManagerScreen();
-                    }else if(pracownik.getIdTyp()==3){
+                        new ManagerScreen(pracownik);
+                    } else if (pracownik.getIdTyp() == 3) {
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta pracowniczego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new ServiceWorkerScreen(pracownik);
-                    }else {
+                    } else {
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta technicznego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new TechnicalsScreen(pracownik);
                     }

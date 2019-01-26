@@ -5,22 +5,21 @@ import java.util.Date;
 
 
 public class Atrakcje implements Serializable {
-     int id_atrakcji ;
-    String nazwa_atrakcji ;
+    int id_atrakcji;
+    String nazwa_atrakcji;
     double cena_idywidualna;
     double cena_grupowa;
-    String data_otwarcia ;
-    String data_zamkniecia ;
+    String data_otwarcia;
+    String data_zamkniecia;
 
 
-    public Atrakcje(int id_atrakcji, String nazwa_atrakcji,double cena_idywidualna,double cena_grupowa,String data_otwarcia,String data_zamkniecia)
-    {
-        this.id_atrakcji=id_atrakcji;
-        this.nazwa_atrakcji=nazwa_atrakcji;
-        this.cena_idywidualna=cena_idywidualna;
-        this.cena_grupowa=cena_grupowa;
-        this.data_otwarcia=data_otwarcia;
-        this.data_zamkniecia=data_zamkniecia;
+    public Atrakcje(int id_atrakcji, String nazwa_atrakcji, double cena_idywidualna, double cena_grupowa, String data_otwarcia, String data_zamkniecia) {
+        this.id_atrakcji = id_atrakcji;
+        this.nazwa_atrakcji = nazwa_atrakcji;
+        this.cena_idywidualna = cena_idywidualna;
+        this.cena_grupowa = cena_grupowa;
+        this.data_otwarcia = data_otwarcia;
+        this.data_zamkniecia = data_zamkniecia;
     }
 
     public int getId_atrakcji() {
@@ -63,7 +62,6 @@ public class Atrakcje implements Serializable {
     public void setData_otwarcia(String data_otwarcia) {
         this.data_otwarcia = data_otwarcia;
     }
-
 
 
     public String getData_zamkniecia() {

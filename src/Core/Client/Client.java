@@ -17,16 +17,16 @@ public class Client {
         return ip;
     }
 
-    public ClientSender getClientServer(){
+    public ClientSender getClientServer() {
         return clientSender;
     }
 
-    public Client(String ip,int port ){
+    public Client(String ip, int port) {
         this.ip = ip;
         this.port = port;
 
         try {
-            Socket socket = new Socket(ip,port);
+            Socket socket = new Socket(ip, port);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             OutputStream outputStream = socket.getOutputStream();
             InputStream inputStream = socket.getInputStream();

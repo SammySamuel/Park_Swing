@@ -10,7 +10,7 @@ public class Pracownik implements Serializable {
     String nazwisko;
     int idTyp;
 
-    public Pracownik(int id,String login,String imie,String pass,String nazwisko,int idTyp){
+    public Pracownik(int id, String login, String imie, String pass, String nazwisko, int idTyp) {
         this.id = id;
         this.login = login;
         this.imie = imie;

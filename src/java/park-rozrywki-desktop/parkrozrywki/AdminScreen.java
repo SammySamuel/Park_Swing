@@ -5,36 +5,53 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AdminScreen extends JFrame implements ActionListener{
+public class AdminScreen extends JFrame implements ActionListener {
 
-    /** glowny screen - logowanie do panelu admina */
+    /**
+     * glowny screen - logowanie do panelu admina
+     */
     JFrame frame = new JFrame("Panel administracyjny");
-    /** zmienna typu static final int, okresla szerrokosc okna */
+    /**
+     * zmienna typu static final int, okresla szerrokosc okna
+     */
     static final int width = 400;
-    /** zmienna typu static final int, okresla wysokosc okna */
+    /**
+     * zmienna typu static final int, okresla wysokosc okna
+     */
     static final int height = 500;
-    /** zmienna typu Jbutton - wylogowywanie */
+    /**
+     * zmienna typu Jbutton - wylogowywanie
+     */
     private JButton btnLogout;
-    /** zmienna typu Jbutton - dodawanie nowego pracownika */
+    /**
+     * zmienna typu Jbutton - dodawanie nowego pracownika
+     */
     private JButton addUser;
-    /** zmienna typu Jbutton - usuwanie pracownika */
+    /**
+     * zmienna typu Jbutton - usuwanie pracownika
+     */
     private JButton deleteUser;
-    /** zmienna typu Jbutton - dodawanie nowej atrakcji */
+    /**
+     * zmienna typu Jbutton - dodawanie nowej atrakcji
+     */
     private JButton addAttraction;
-    /** zmienna typu JLabel - tlo programu */
+    /**
+     * zmienna typu JLabel - tlo programu
+     */
     protected JLabel background;
-    /** ikonka programu */
+    /**
+     * ikonka programu
+     */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
 
-
-    AdminScreen(){
+    AdminScreen() {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btnLogout = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
-        btnLogout.setBounds(100,370,160,56);
+        btnLogout.setBounds(100, 370, 160, 56);
         btnLogout.setBorderPainted(false);
         btnLogout.setContentAreaFilled(false);
         btnLogout.addActionListener(this);
@@ -50,7 +67,7 @@ public class AdminScreen extends JFrame implements ActionListener{
         frame.add(btnLogout);
 
         addUser = new JButton(new ImageIcon("src/resources/img/btnNewUser.png"));
-        addUser.setBounds(100,300,160,56);
+        addUser.setBounds(100, 300, 160, 56);
         addUser.setBorderPainted(false);
         addUser.setContentAreaFilled(false);
         addUser.addActionListener(this);
@@ -65,7 +82,7 @@ public class AdminScreen extends JFrame implements ActionListener{
         frame.add(addUser);
 
         deleteUser = new JButton(new ImageIcon("src/resources/img/btnRemoveUser.png"));
-        deleteUser.setBounds(100,230,160,56);
+        deleteUser.setBounds(100, 230, 160, 56);
         deleteUser.setBorderPainted(false);
         deleteUser.setContentAreaFilled(false);
         deleteUser.addActionListener(this);
@@ -80,7 +97,7 @@ public class AdminScreen extends JFrame implements ActionListener{
         frame.add(deleteUser);
 
         addAttraction = new JButton(new ImageIcon("src/resources/img/btnAddAttraction.png"));
-        addAttraction.setBounds(100,160,160,56);
+        addAttraction.setBounds(100, 160, 160, 56);
         addAttraction.setBorderPainted(false);
         addAttraction.setContentAreaFilled(false);
         addAttraction.addActionListener(this);
@@ -100,7 +117,7 @@ public class AdminScreen extends JFrame implements ActionListener{
         frame.add(background);
 
         frame.setVisible(true);
-        frame.setSize(width,height);
+        frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());
