@@ -23,7 +23,7 @@ public class NewRaportScreen extends JFrame implements  ActionListener
     private JLabel lTypeFailure;
     private JLabel lDescription;
 
-
+    private JScrollPane scroll;
     private JComboBox cType;
 
     protected JLabel background;
@@ -64,9 +64,11 @@ public class NewRaportScreen extends JFrame implements  ActionListener
         lTypeFailure.setBounds(20,270,200,40);
         frame.add(lTypeFailure);
 
-        taDescription= new JTextArea();
-        taDescription.setBounds(170,320,200,80);
-        frame.add(taDescription);
+        taDescription= new JTextArea(5,10);
+        scroll=new JScrollPane(taDescription,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll.setLocation(170,320);
+        scroll.setSize(200,100);
+        frame.add(scroll);
 
         lDescription = new JLabel();
         lDescription.setText("Description:");
@@ -83,7 +85,7 @@ public class NewRaportScreen extends JFrame implements  ActionListener
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 JOptionPane.showMessageDialog(null, "Awaria została zgłoszona", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
-                new ServiceWorkerScreen();
+                new NewRaportScreen();
                 frame.setVisible(false);
                 frame.dispose();
             }

@@ -103,7 +103,7 @@ public class NewUserScreen extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
                 frame.setVisible(false);
-                new AdminScreen();
+                new NewUserScreen();
             }
         });
         frame.add(btnAdd);
