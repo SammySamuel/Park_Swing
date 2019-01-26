@@ -133,6 +133,8 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Nowa atrkacja została dodana ", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 new NewAttractionScreen();
                 frame.dispose();
+                frame.setVisible(false);
+                new AdminScreen();
             }
         });
         frame.add(btnAdd);

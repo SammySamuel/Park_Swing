@@ -102,6 +102,8 @@ public class NewUserScreen extends JFrame implements ActionListener {
                 addNewUser(tfLogin.getText(),tfName.getText(),tfSurname.getText(),tfPassword.getText(),cType.getSelectedIndex());
                 JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
+                frame.setVisible(false);
+                new AdminScreen();
             }
         });
         frame.add(btnAdd);
