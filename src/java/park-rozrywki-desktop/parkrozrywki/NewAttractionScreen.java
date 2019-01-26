@@ -9,13 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
+
 
 public class NewAttractionScreen extends JFrame implements ActionListener{
 
@@ -137,6 +131,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
                 addAtrakctionButton(attractionName.getText(),Double.parseDouble(soloPrice.getText()),Double.parseDouble(groupPrice.getText()),startDate.getText(),endDate.getText());
 
                 JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
+                new NewAttractionScreen();
                 frame.dispose();
             }
         });

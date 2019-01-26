@@ -7,5 +7,7 @@ public enum ServerOperation {
     addAttraction,
     getSPracownik,
     getAttraction,
+    getRaport,
+    addRaport
 
 }

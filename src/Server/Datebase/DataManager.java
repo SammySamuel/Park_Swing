@@ -2,6 +2,7 @@ package Server.Datebase;
 
 import Core.Atrakcje;
 import Core.Pracownik;
+import Core.Raport;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -105,6 +106,40 @@ public class DataManager {
         }
         return atrakcja;
     }
+    public static void addRaport (Raport raport)
+    {
+        String sql=("INSERT INTO Raport(id_raport,id_pracownik,id_atrkacji,id_typ_awarii,opis,status) Values("
+                +raport.getId_raport()+","
+                +raport.getId_pracownika()+","
+                +raport.getId_atrakcji()+","
+                +raport.getId_typ_awarii()+",'"
+                +raport.getOpis()+"','"
+                +raport.getStatus()+"')"
+        );
+        DatebaseConnector.execute(sql);
+    }
 
+    public static Object getRaport(int id_raport)
+    {
+        String sql="SELECT * FROM Raport WHERE id_raport="+id_raport+"";
+        ResultSet result=DatebaseConnector.getResultSet(sql);
+        Raport raport=null;
+        try
+        {
+            result.next();
+            raport=new Raport(
+                    result.getInt("id_raport"),
+                    result.getInt("id_pracownik"),
+                    result.getInt("id_atrakcji"),
+                    result.getInt("id_typ_awarii"),
+                    result.getString("opis"),
+                    result.getString("status")
+            );
+        }catch (SQLException sqlex)
+        {
+            sqlex.printStackTrace();
+        }
+        return raport;
+    }
 
 }
