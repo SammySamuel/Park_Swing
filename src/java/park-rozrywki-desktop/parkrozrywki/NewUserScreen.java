@@ -99,6 +99,7 @@ public class NewUserScreen extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                addNewUser(tfLogin.getText(),tfName.getText(),tfSurname.getText(),tfPassword.getText(),cType.getSelectedIndex());
                 JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
@@ -129,6 +130,14 @@ public class NewUserScreen extends JFrame implements ActionListener {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setIconImage(icon.getImage());
+    }
+
+    public void addNewUser(String login,String imie, String nazwisko,String pass,int typ){
+        Client client = new Client("localhost",4821);
+        ClientManager clientManager = new ClientManager();
+
+        Pracownik pracownik = new Pracownik(0,login,imie,pass,nazwisko,typ+1);
+        ClientManager.clientSender.sendToServer(ServerOperation.addPracownik,pracownik);
     }
 
     @Override
