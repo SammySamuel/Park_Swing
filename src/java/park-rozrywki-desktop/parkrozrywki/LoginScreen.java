@@ -71,10 +71,10 @@ public class LoginScreen extends JFrame implements ActionListener {
                     }else if(pracownik.getIdTyp()==3){
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta pracowniczego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new ServiceWorkerScreen();
-                    }else
+                    }else {
                         JOptionPane.showMessageDialog(null, "Zostales prawidlowo zalogowany do konta technicznego", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                         new TechnicalsScreen();
-
+                    }
                     frame.dispose();
                 }
 

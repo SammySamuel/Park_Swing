@@ -14,17 +14,16 @@ public class NewRaportScreen extends JFrame implements  ActionListener
     private JButton btnAdd;
     private JButton btnReturn;
 
-    private JTextField tfIdPracownik;
-    private JTextField tfIdAtrakcji;
     private JTextArea taDescription;
 
-    private JLabel lIdPracownik;
     private JLabel lIdAtrkacji;
     private JLabel lTypeFailure;
     private JLabel lDescription;
 
     private JScrollPane scroll;
     private JComboBox cType;
+    private JComboBox cAttraction;
+
 
     protected JLabel background;
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
@@ -35,44 +34,36 @@ public class NewRaportScreen extends JFrame implements  ActionListener
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        tfIdPracownik= new JTextField();
-        tfIdPracownik.setBounds(170,170,200,40);
-        frame.add(tfIdPracownik);
 
-        lIdPracownik = new JLabel();
-        lIdPracownik.setText("Your ID:");
-        lIdPracownik.setBounds(20,170,200,40);
-        frame.add(lIdPracownik);
-
-        tfIdAtrakcji= new JTextField();
-        tfIdAtrakcji.setBounds(170,220,200,40);
-        frame.add(tfIdAtrakcji);
+        cAttraction= new JComboBox();
+        cAttraction.setBounds(170,170,200,40);
+        frame.add(cAttraction);
 
         lIdAtrkacji = new JLabel();
-        lIdAtrkacji.setText("Attraction ID:");
-        lIdAtrkacji.setBounds(20,220,200,40);
+        lIdAtrkacji.setText("Attraction :");
+        lIdAtrkacji.setBounds(20,170,200,40);
         frame.add(lIdAtrkacji);
 
 
         cType=new JComboBox(typy);
-        cType.setBounds(170,270,200,40);
+        cType.setBounds(170,220,200,40);
         cType.addActionListener(this);
         frame.add(cType);
 
         lTypeFailure = new JLabel();
         lTypeFailure.setText("Type Failure:");
-        lTypeFailure.setBounds(20,270,200,40);
+        lTypeFailure.setBounds(20,220,200,40);
         frame.add(lTypeFailure);
 
         taDescription= new JTextArea(5,10);
         scroll=new JScrollPane(taDescription,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scroll.setLocation(170,320);
+        scroll.setLocation(170,270);
         scroll.setSize(200,100);
         frame.add(scroll);
 
         lDescription = new JLabel();
         lDescription.setText("Description:");
-        lDescription.setBounds(20,320,200,40);
+        lDescription.setBounds(20,270,200,40);
         frame.add(lDescription);
 
         btnAdd = new JButton(new ImageIcon("src/resources/img/btnAdd.png"));

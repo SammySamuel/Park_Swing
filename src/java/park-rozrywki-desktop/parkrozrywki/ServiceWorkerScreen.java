@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class ServiceWorkerScreen extends JFrame implements ActionListener{
 
     /** glowny screen - logowanie do panelu admina */
-    JFrame frame = new JFrame("Panel administracyjny");
+    JFrame frame = new JFrame("Eleden | Panel pracowniczy");
     /** zmienna typu static final int, okresla szerrokosc okna */
     static final int width = 400;
     /** zmienna typu static final int, okresla wysokosc okna */
