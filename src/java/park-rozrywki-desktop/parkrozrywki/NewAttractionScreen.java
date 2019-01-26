@@ -130,7 +130,7 @@ public class NewAttractionScreen extends JFrame implements ActionListener{
 
                 addAtrakctionButton(attractionName.getText(),Double.parseDouble(soloPrice.getText()),Double.parseDouble(groupPrice.getText()),startDate.getText(),endDate.getText());
 
-                JOptionPane.showMessageDialog(null, "Nowy uzytkownik zostal pomyslnie dodany do systemu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Nowa atrkacja została dodana ", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 new NewAttractionScreen();
                 frame.dispose();
             }
