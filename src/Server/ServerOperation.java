@@ -4,6 +4,6 @@ package Server;
 public enum ServerOperation {
     disconnect,
     addPracownik,getPracownik,getSPracownik,howManyPracownik,getPracownikToList,removeUserFromBase,
-    addAttraction, getAttraction,
+    addAttraction, getAttraction,getAttractionToList,
     getRaport, addRaport
 }

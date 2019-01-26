@@ -3,6 +3,7 @@ package Server;
 import Core.Atrakcje;
 import Core.Client.ServerOperation;
 import Core.Pracownik;
+import Core.Raport;
 import Server.Datebase.DataManager;
 import Server.Datebase.DatebaseConnector;
 
@@ -94,8 +95,6 @@ public class ConnectedClient extends Thread {
                 break;
 
             case getPracownikToList:
-                Pracownik[] pracownicy = (Pracownik[]) object;
-
                 try {
                     objectOutputStream.writeObject(DataManager.getPracownikToList());
                 } catch (IOException e) {
@@ -130,6 +129,25 @@ public class ConnectedClient extends Thread {
                 try
                 {
                     objectOutputStream.writeObject(DataManager.getAttraction(id_atrakcji));
+                }catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+                break;
+
+            case getAttractionToList:
+                try {
+                    objectOutputStream.writeObject(DataManager.getAttractionToList());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case addRaport:
+                Raport raport = (Raport) object;
+                DataManager.addRaport(raport);
+                try
+                {
+                    objectOutputStream.writeObject("cos");
                 }catch (IOException e)
                 {
                     e.printStackTrace();

@@ -1,3 +1,5 @@
+import Core.Pracownik;
+
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.*;
@@ -26,7 +28,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
     /** ikonka programu */
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    ServiceWorkerScreen(){
+    ServiceWorkerScreen(Pracownik pracownik){
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +72,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                new NewRaportScreen();
+                new NewRaportScreen(pracownik);
                 frame.dispose();
             }
         });

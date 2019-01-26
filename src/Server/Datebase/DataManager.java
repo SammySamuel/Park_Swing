@@ -6,6 +6,7 @@ import Core.Raport;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -154,12 +155,56 @@ public class DataManager {
         return atrakcja;
     }
 
+    public static int howManyAttraction() {
+        String sql = "SELECT COUNT(*) AS count from ATRAKCJE";
+        ResultSet resultSet = DatebaseConnector.getResultSet(sql);
+        int ilosc = 0;
+        try {
+            while (resultSet.next()) {
+                ilosc = (resultSet.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ilosc;
+    }
+
+    public static ArrayList<Atrakcje> getAttractionToList(){
+        ArrayList<Atrakcje> atrakcje = new ArrayList<Atrakcje>();
+        int number = howManyAttraction();
+
+        String sql = "SELECT * FROM ATRAKCJE";
+        ResultSet rs= DatebaseConnector.getResultSet(sql);
+        Atrakcje at = null;
+
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+
+        for (int i =0;i<number;i++){
+            try {
+                rs.next();
+                at = new Atrakcje(
+                        rs.getInt("id_atrakcji"),
+                        rs.getString("nazwa_atrakcji"),
+                        rs.getDouble("cena_idywidualna"),
+                        rs.getDouble("cena_grupowa"),
+                        /*null,
+                        null);*/
+                        df.format(rs.getDate("data_otwarcia")),
+                        df.format(rs.getDate("data_zamkniecia")));
+                atrakcje.add(at);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return atrakcje;
+    }
 
     //////////////////////////////////////////////////////////////////
 
     public static void addRaport(Raport raport) {
-        String sql = ("INSERT INTO Raport(id_raport,id_pracownik,id_atrkacji,id_typ_awarii,opis,status) Values("
-                + raport.getId_raport() + ","
+        String sql = ("INSERT INTO Raport(id_raport,id_pracownika,id_atrakcji,id_typ_awarii,opis,status) Values(sekwencja_raport.nextval,"
                 + raport.getId_pracownika() + ","
                 + raport.getId_atrakcji() + ","
                 + raport.getId_typ_awarii() + ",'"

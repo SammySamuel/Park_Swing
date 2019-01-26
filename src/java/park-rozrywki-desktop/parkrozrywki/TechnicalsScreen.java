@@ -1,3 +1,5 @@
+import Core.Pracownik;
+
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.*;
@@ -26,7 +28,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener{
 
     protected JLabel background;
 
-    TechnicalsScreen(){
+    TechnicalsScreen(Pracownik pracownik){
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
