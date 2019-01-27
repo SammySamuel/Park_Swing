@@ -8,4 +8,6 @@ public enum ServerOperation {
     getRaport, addRaport,getUnimplementedRaport,updateStatusRaport,
     addPlan,
     getTypPracownika,
+    getReportRaport,
+    takeRaport
 }

@@ -30,6 +30,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
 
     private JButton btnLogin;
     private JButton checkRaport;
+    private JButton repair;
     private JButton checkDayPlans;
     private JButton checkWeekPlans;
 
@@ -42,7 +43,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         btnLogin = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
-        btnLogin.setBounds(100, 370, 160, 56);
+        btnLogin.setBounds(100, 380, 160, 56);
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
         btnLogin.addActionListener(this);
@@ -58,7 +59,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         frame.add(btnLogin);
 
         checkRaport = new JButton(new ImageIcon("src/resources/img/btnCheckReports.png"));
-        checkRaport.setBounds(100, 300, 160, 56);
+        checkRaport.setBounds(100, 320, 160, 56);
         checkRaport.setBorderPainted(false);
         checkRaport.setContentAreaFilled(false);
         checkRaport.addActionListener(this);
@@ -72,8 +73,23 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         });
         frame.add(checkRaport);
 
+        repair = new JButton(new ImageIcon("src/resources/img/btnLogin-Kopia.png"));
+        repair.setBounds(100, 260, 170, 56);
+        repair.setBorderPainted(false);
+        repair.setContentAreaFilled(false);
+        repair.addActionListener(this);
+        repair.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                new RepairScreen(pracownik);
+                frame.dispose();
+            }
+        });
+        frame.add(repair);
+
         checkDayPlans = new JButton(new ImageIcon("src/resources/img/btnTodayPlans.png"));
-        checkDayPlans.setBounds(100, 230, 160, 56);
+        checkDayPlans.setBounds(100, 200, 160, 56);
         checkDayPlans.setBorderPainted(false);
         checkDayPlans.setContentAreaFilled(false);
         checkDayPlans.addActionListener(this);
@@ -87,7 +103,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         frame.add(checkDayPlans);
 
         checkWeekPlans = new JButton(new ImageIcon("src/resources/img/btnWeeklyPlans.png"));
-        checkWeekPlans.setBounds(100, 160, 160, 56);
+        checkWeekPlans.setBounds(100, 140, 160, 56);
         checkWeekPlans.setBorderPainted(false);
         checkWeekPlans.setContentAreaFilled(false);
         checkWeekPlans.addActionListener(this);

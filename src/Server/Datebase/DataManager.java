@@ -274,13 +274,37 @@ public class DataManager {
         }
         return raportArrayList;
 
-    }//////////
+    }
 
+    public static ArrayList<Raport> getReportRaport(int typ) {
+        ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
+        int number = howManyRaports();
+
+        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'zgloszony'";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+        Raport r = null;
+
+        for (int i = 0; i < number; i++) {
+            try {
+                rs.next();
+                r = new Raport(rs.getInt("id_raport"), rs.getInt("id_pracownika"), rs.getInt("id_atrakcji"), rs.getInt("id_typ_awarii"), rs.getString("opis"), rs.getString("status"));
+                raportArrayList.add(r);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return raportArrayList;
+    }
     public static void updateStatusRaport(int id_raport){
         String sql = "UPDATE RAPORT SET STATUS ='wykonany' WHERE id_raport = " + id_raport + " ";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
     }
-
+    public static void takeRaport(int id_raport)
+    {
+        String sql = "UPDATE RAPORT SET STATUS ='przyjety' WHERE id_raport = " + id_raport + " ";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+    }
     /////////////////////////////////////////////////////////////////////////////////////////
     public static void addPlan(Plany plan) {
         String sql = ("INSERT INTO Plany (id_planu,id_pracownika,id_stanowiska,id_atrakcji,data) VALUES(sekwencja_plany.nextval,"

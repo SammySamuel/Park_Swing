@@ -16,7 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class CheckRaportScreen extends JFrame implements ActionListener {
+public class RepairScreen extends JFrame implements ActionListener {
 
     ArrayList<Raport> raportArrayList;
 
@@ -35,11 +35,11 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
     protected JLabel background;
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    CheckRaportScreen(Pracownik pracownik) {
+    RepairScreen(Pracownik pracownik) {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        loadReportRaport(pracownik);
+        loadUnimplementedRaport(pracownik);
 
         jTable = new JTable();
         model.setColumnIdentifiers(headers);
@@ -74,9 +74,9 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
                 int i = jTable.getSelectedRow();
                 TableModel m = jTable.getModel();
                 String id = model.getValueAt(i,0).toString();
-                takeRaport(Integer.parseInt(id));
-                JOptionPane.showMessageDialog(null, "Awaria została przyjęta", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
-                new CheckRaportScreen(pracownik);
+                doRapair(Integer.parseInt(id));
+                JOptionPane.showMessageDialog(null, "Naprawa została wykonana", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
+                new RepairScreen(pracownik);
                 frame.setVisible(false);
                 frame.dispose();
             }
@@ -111,14 +111,14 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
     }
 
 
-    void loadReportRaport(Pracownik pracownik) {
+    void loadUnimplementedRaport(Pracownik pracownik) {
         Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
 
-        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.getReportRaport, pracownik.getIdTyp());
+        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.getUnimplementedRaport, pracownik.getIdTyp());
     }
 
-    void takeRaport(int id){
+    void doRapair(int id){
 
         Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
@@ -127,9 +127,8 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         Pracownik pr = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,rap.getId_pracownika());
         TypPracownika tp = (TypPracownika)ClientManager.clientSender.sendToServer(ServerOperation.getTypPracownika,pr.getIdTyp());
         RepairController rc = new RepairController(tp.getTyp());
-        rc.repair();
 
-        ClientManager.clientSender.sendToServer(ServerOperation.takeRaport,id);
+        ClientManager.clientSender.sendToServer(ServerOperation.updateStatusRaport,id);
 
     }
 

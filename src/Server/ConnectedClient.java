@@ -172,6 +172,15 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getReportRaport:
+                int raporcik=(Integer) object;
+                try
+                {
+                    objectOutputStream.writeObject(DataManager.getReportRaport(raporcik));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
             case getTypPracownika:
                 int idt = (Integer)object;
                 try {
@@ -183,6 +192,15 @@ public class ConnectedClient extends Thread {
             case updateStatusRaport:
                 int idr = (Integer) object;
                 DataManager.updateStatusRaport(idr);
+                try {
+                    objectOutputStream.writeObject("cos");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case takeRaport:
+                int idrap = (Integer) object;
+                DataManager.takeRaport(idrap);
                 try {
                     objectOutputStream.writeObject("cos");
                 } catch (IOException e) {
