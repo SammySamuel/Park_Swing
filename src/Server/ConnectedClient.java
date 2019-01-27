@@ -158,6 +158,12 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getUnimplementedRaport:
+                try {
+                    objectOutputStream.writeObject(DataManager.getUnimplementedRaport());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
         }
     }
