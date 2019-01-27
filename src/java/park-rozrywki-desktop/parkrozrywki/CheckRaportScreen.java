@@ -127,7 +127,7 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         }
 
 
-        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.takeRaport, idT);
+        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.getReportRaport, idT);
     }
 
     void takeRaport(int id){
@@ -138,8 +138,6 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         Raport rap = (Raport)ClientManager.clientSender.sendToServer(ServerOperation.getRaport,id);
         Pracownik pr = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,rap.getId_pracownika());
         TypPracownika tp = (TypPracownika)ClientManager.clientSender.sendToServer(ServerOperation.getTypPracownika,pr.getIdTyp());
-        RepairController rc = new RepairController(tp.getTyp());
-        rc.repair();
 
         ClientManager.clientSender.sendToServer(ServerOperation.takeRaport,id);
 
