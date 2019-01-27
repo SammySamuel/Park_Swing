@@ -180,6 +180,13 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getAllRaport:
+                try {
+                    objectOutputStream.writeObject(DataManager.getAllRaport());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
             case getReportRaport:
                 int raporcik=(Integer) object;
                 try

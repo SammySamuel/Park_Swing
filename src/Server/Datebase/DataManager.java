@@ -348,6 +348,33 @@ public class DataManager {
         return raportArrayList;
     }
 
+    public static ArrayList<Raport> getAllRaport()
+    {
+        ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
+        int number = howManyRaports();
+        String sql = " SELECT * FROM RAPORT";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+        Raport r = null;
+
+        for (int i = 0; i < number; i++) {
+            try {
+                rs.next();
+                r = new Raport(
+                        rs.getInt("id_raport"),
+                        rs.getInt("id_pracownika"),
+                        rs.getInt("id_atrakcji"),
+                        rs.getInt("id_typ_awarii"),
+                        rs.getString("opis"),
+                        rs.getString("status")
+                );
+                raportArrayList.add(r);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return raportArrayList;
+    }
     public static void updateStatusRaport(int id_raport){
         String sql = "UPDATE RAPORT SET STATUS ='wykonany' WHERE id_raport = " + id_raport + " ";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
