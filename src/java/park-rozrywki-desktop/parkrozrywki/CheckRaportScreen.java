@@ -127,7 +127,7 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         }
 
 
-        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.getUnimplementedRaport, idT);
+        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.takeRaport, idT);
     }
 
     void takeRaport(int id){

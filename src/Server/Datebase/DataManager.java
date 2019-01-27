@@ -347,6 +347,7 @@ public class DataManager {
 
         return raportArrayList;
     }
+
     public static void updateStatusRaport(int id_raport){
         String sql = "UPDATE RAPORT SET STATUS ='wykonany' WHERE id_raport = " + id_raport + " ";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
