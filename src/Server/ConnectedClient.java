@@ -1,10 +1,7 @@
 package Server;
 
-import Core.Atrakcje;
+import Core.*;
 import Core.Client.ServerOperation;
-import Core.Plany;
-import Core.Pracownik;
-import Core.Raport;
 import Server.Datebase.DataManager;
 import Server.Datebase.DatebaseConnector;
 
@@ -148,6 +145,15 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getRaport:
+                int idgr = (Integer)object;
+                try {
+                    objectOutputStream.writeObject(DataManager.getRaport(idgr));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
 
             case addPlan:
                 Plany plany = (Plany) object;
@@ -159,11 +165,30 @@ public class ConnectedClient extends Thread {
                 }
                 break;
             case getUnimplementedRaport:
+                int typ = (Integer)object;
                 try {
-                    objectOutputStream.writeObject(DataManager.getUnimplementedRaport());
+                    objectOutputStream.writeObject(DataManager.getUnimplementedRaport(typ));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
+            case getTypPracownika:
+                int idt = (Integer)object;
+                try {
+                    objectOutputStream.writeObject(DataManager.getTypPracownika(idt));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case updateStatusRaport:
+                int idr = (Integer) object;
+                DataManager.updateStatusRaport(idr);
+                try {
+                    objectOutputStream.writeObject("cos");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
 
         }
     }

@@ -6,5 +6,6 @@ public enum ServerOperation {
     addAttraction, getAttraction, getAttractionToList,
     getRaport, addRaport,getUnimplementedRaport,
     addPlan,
+    getTypPracownika, updateStatusRaport,
 
 }
