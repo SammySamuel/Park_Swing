@@ -13,10 +13,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class OneDayPlanScreen extends JFrame implements ActionListener {
+public class WeekPlanScreen extends JFrame implements ActionListener {
     ArrayList<Plany> planyArrayList;
 
-    JFrame frame = new JFrame("Eleden | Przeglądanie planow dnia");
+    JFrame frame = new JFrame("Eleden | Przeglądanie planow tygodniowych");
     static final int width = 400;
     static final int height = 600;
 
@@ -31,7 +31,7 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
     protected JLabel background;
     ImageIcon icon = new ImageIcon("src/resources/img/icon.png");
 
-    OneDayPlanScreen(Pracownik pracownik) {
+    WeekPlanScreen(Pracownik pracownik) {
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -93,7 +93,7 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
         Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
 
-        planyArrayList = (ArrayList<Plany>) ClientManager.clientSender.sendToServer(ServerOperation.getOneDayPlanList, pracownik.getId());
+        planyArrayList = (ArrayList<Plany>) ClientManager.clientSender.sendToServer(ServerOperation.getWeekPlanList, pracownik.getId());
     }
 
 

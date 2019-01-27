@@ -9,6 +9,7 @@ public enum ServerOperation {
     addPlan,getPlan,getOneDayPlanList,
     getTypPracownika,
     getTypAwarii,
+    getWeekPlanList
 
 
 }
