@@ -455,7 +455,6 @@ public class DataManager {
             return planyArrayList;
     }
 
-
     //////////////////////////////////////////////////////////////////////////////////////////
     public static Object getTypPracownika(int id){
         String sql = "SELECT * FROM TYP_PRACOWNIKA WHERE id_typ_pracownika ="+id + " ";
@@ -475,7 +474,6 @@ public class DataManager {
         return tp;
     }
 
-
     //////////////////////////////////////////////////////////////////////////////////////////
     public static Object getTypAwarii(int id){
         String sql = "SELECT * FROM TYP_AWARII WHERE id_typ_awarii = " + id +" ";
@@ -492,5 +490,23 @@ public class DataManager {
             e.printStackTrace();
         }
         return awarii;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    public static Object getStanowisko(int id){
+        String sql = "SELECT * FROM STANOWISKO WHERE id_stanowiska = " + id +" ";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+
+        Stanowisko stanowisko = null;
+        try {
+            rs.next();
+            stanowisko = new Stanowisko(
+                    rs.getInt("id_stanowiska"),
+                    rs.getString("nazwa_stanowiska")
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return stanowisko;
     }
 }

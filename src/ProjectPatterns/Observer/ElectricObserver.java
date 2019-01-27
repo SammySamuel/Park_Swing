@@ -1,4 +1,4 @@
-package Observer;
+package ProjectPatterns.Observer;
 
 public class ElectricObserver implements RaportObserver {
     @Override

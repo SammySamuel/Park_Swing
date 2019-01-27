@@ -239,6 +239,13 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getStanowisko:
+                id = (Integer) object;
+                try {
+                    objectOutputStream.writeObject(DataManager.getStanowisko(id));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
     }
 

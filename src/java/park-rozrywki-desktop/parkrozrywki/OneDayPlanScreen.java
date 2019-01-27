@@ -1,8 +1,6 @@
+import Core.*;
 import Core.Client.Client;
 import Core.Client.ServerOperation;
-import Core.ClientManager;
-import Core.Plany;
-import Core.Pracownik;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -42,11 +40,19 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
         jTable.setModel(model);
         scroll = new JScrollPane(jTable);
 
+        Client client = new Client("localhost", 4821);
+        ClientManager clientManager = new ClientManager();
+
+        Atrakcje atrakcje = null;
+        Stanowisko stanowisko = null;
+
         for (Plany p : planyArrayList) {
+            atrakcje = (Atrakcje)ClientManager.clientSender.sendToServer(ServerOperation.getAttraction,p.getId_atrakcji());
+            stanowisko = (Stanowisko)ClientManager.clientSender.sendToServer(ServerOperation.getStanowisko,p.getId_stanowiska());
             model.addRow(
                     new Object[]{
-                            p.getId_stanowiska(),
-                            p.getId_atrakcji(),
+                            atrakcje.getNazwa_atrakcji(),
+                            stanowisko.getNazwa(),
                             p.getData()
                     }
             );
