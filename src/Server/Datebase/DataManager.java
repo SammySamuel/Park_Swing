@@ -251,7 +251,7 @@ public class DataManager {
         ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
         int number = howManyRaports();
 
-        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'zgloszony'";
+        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'przyjety'";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
         Raport r = null;
 
@@ -277,7 +277,7 @@ public class DataManager {
     }//////////
 
     public static void updateStatusRaport(int id_raport){
-        String sql = "UPDATE RAPORT SET STATUS ='naprawiony' WHERE id_raport = " + id_raport + " ";
+        String sql = "UPDATE RAPORT SET STATUS ='wykonany' WHERE id_raport = " + id_raport + " ";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
     }
 
