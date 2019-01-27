@@ -70,12 +70,11 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.setVisible(false);
-                new ServiceWorkerScreen(pracownik);
             }
         });
         frame.add(btnReturn);
 
-        background = new JLabel(new ImageIcon("src/resources/img/background400x600.png"));
+        background = new JLabel(new ImageIcon("src/resources/img/background800x600.png"));
         background.setOpaque(true);
         background.setBounds(-10, 0, width, height);
         frame.add(background);

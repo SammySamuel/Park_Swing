@@ -112,7 +112,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                new OneWeekPlanScreen(pracownik);
+               // new OneWeekPlanScreen(pracownik);
 
                 frame.dispose();
             }

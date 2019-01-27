@@ -30,7 +30,8 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener {
     /**
      * zmienna typu Jbutton - sprawdzanie planow
      */
-    private JButton checkPlans;
+    private JButton checkTodayPlans;
+    private JButton checkWeekPlans;
     /**
      * zmienna typu Jbutton - zglaszanie usterki
      */
@@ -65,22 +66,37 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener {
         });
         frame.add(btnLogout);
 
-        checkPlans = new JButton(new ImageIcon("src/resources/img/btnCheckPlans.png"));
-        checkPlans.setBounds(100, 300, 160, 56);
-        checkPlans.setBorderPainted(false);
-        checkPlans.setContentAreaFilled(false);
-        checkPlans.addActionListener(this);
-        checkPlans.addMouseListener(new MouseAdapter() {
+        checkTodayPlans = new JButton(new ImageIcon("src/resources/img/btnTodayPlans.png"));
+        checkTodayPlans.setBounds(100, 300, 160, 56);
+        checkTodayPlans.setBorderPainted(false);
+        checkTodayPlans.setContentAreaFilled(false);
+        checkTodayPlans.addActionListener(this);
+        checkTodayPlans.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                new OneDayPlanScreen(pracownik);
+                frame.dispose();
+            }
+        });
+        frame.add(checkTodayPlans);
+
+        checkWeekPlans = new JButton(new ImageIcon("src/resources/img/btnWeeklyPlans.png"));
+        checkWeekPlans.setBounds(100, 230, 160, 56);
+        checkWeekPlans.setBorderPainted(false);
+        checkWeekPlans.setContentAreaFilled(false);
+        checkWeekPlans.addActionListener(this);
+        checkWeekPlans.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.dispose();
             }
         });
-        frame.add(checkPlans);
+        frame.add(checkWeekPlans);
 
         reportDamage = new JButton(new ImageIcon("src/resources/img/btnReportDamage.png"));
-        reportDamage.setBounds(100, 230, 160, 56);
+        reportDamage.setBounds(100, 160, 160, 56);
         reportDamage.setBorderPainted(false);
         reportDamage.setContentAreaFilled(false);
         reportDamage.addActionListener(this);
