@@ -1,9 +1,6 @@
 package Server.Datebase;
 
-import Core.Atrakcje;
-import Core.Plany;
-import Core.Pracownik;
-import Core.Raport;
+import Core.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -216,14 +213,14 @@ public class DataManager {
     }
 
     public static Object getRaport(int id_raport) {
-        String sql = "SELECT * FROM Raport WHERE id_raport=" + id_raport + "";
+        String sql = "SELECT * FROM Raport WHERE id_raport = " + id_raport + "";
         ResultSet result = DatebaseConnector.getResultSet(sql);
         Raport raport = null;
         try {
             result.next();
             raport = new Raport(
                     result.getInt("id_raport"),
-                    result.getInt("id_pracownik"),
+                    result.getInt("id_pracownika"),
                     result.getInt("id_atrakcji"),
                     result.getInt("id_typ_awarii"),
                     result.getString("opis"),
@@ -254,7 +251,7 @@ public class DataManager {
         ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
         int number = howManyRaports();
 
-        String sql = " SELECT * FROM RAPORT WHERE status = 'zgloszony' AND ";////////////zapytanie o połaczone relacje miedzy tabela pracownik a raport
+        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'zgloszony'";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
         Raport r = null;
 
@@ -263,7 +260,7 @@ public class DataManager {
                 rs.next();
                 r = new Raport(
                         rs.getInt("id_raport"),
-                        rs.getInt("id_pracownik"),
+                        rs.getInt("id_pracownika"),
                         rs.getInt("id_atrakcji"),
                         rs.getInt("id_typ_awarii"),
                         rs.getString("opis"),
@@ -277,6 +274,11 @@ public class DataManager {
         }
         return raportArrayList;
 
+    }//////////
+
+    public static void updateStatusRaport(int id_raport){
+        String sql = "UPDATE RAPORT SET STATUS ='naprawiony' WHERE id_raport = " + id_raport + " ";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////
@@ -309,5 +311,25 @@ public class DataManager {
         }
 
         return plan;
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    public static Object getTypPracownika(int id){
+        String sql = "SELECT * FROM TYP_PRACOWNIKA WHERE id_typ_pracownika ="+id + " ";
+        ResultSet rs =DatebaseConnector.getResultSet(sql);
+
+        TypPracownika tp = null;
+        try {
+            rs.next();
+            tp = new TypPracownika(
+                    rs.getInt("id_typ_pracownika"),
+                    rs.getString("typ_pracownika")
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return tp;
     }
 }
