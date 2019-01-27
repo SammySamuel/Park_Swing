@@ -73,7 +73,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         });
         frame.add(checkRaport);
 
-        repair = new JButton(new ImageIcon("src/resources/img/btnLogin-Kopia.png"));
+        repair = new JButton(new ImageIcon("src/resources/img/btnRepair.png"));
         repair.setBounds(100, 260, 170, 56);
         repair.setBorderPainted(false);
         repair.setContentAreaFilled(false);

@@ -41,10 +41,6 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         jTable = new JTable();
         model.setColumnIdentifiers(headers);
         jTable.setModel(model);
-        scroll = new JScrollPane(jTable);
-
-        add(scroll, BorderLayout.CENTER);
-        model.addRow(headers);
 
         Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
@@ -66,11 +62,14 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
                     }
             );
         }
-        jTable.setBounds(30,100,700,300);
-        frame.add(jTable);
+        jTable.setBounds(40,140,700,300);
+        scroll = new JScrollPane(jTable);
+        scroll.setLocation(40,148);
+        scroll.setSize(700,300);
+        frame.add(scroll);
 
-        btnAdd = new JButton(new ImageIcon("src/resources/img/btnAdd.png"));
-        btnAdd.setBounds(100, 450, 160, 56);
+        btnAdd = new JButton(new ImageIcon("src/resources/img/btnTake.png"));
+        btnAdd.setBounds(200, 450, 160, 56);
         btnAdd.setBorderPainted(false);
         btnAdd.setContentAreaFilled(false);
         btnAdd.addActionListener(this);
@@ -92,7 +91,7 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         frame.add(btnAdd);
 
         btnReturn = new JButton(new ImageIcon("src/resources/img/btnReturn.png"));
-        btnReturn.setBounds(250, 450, 160, 56);
+        btnReturn.setBounds(400, 450, 160, 56);
         btnReturn.setBorderPainted(false);
         btnReturn.setContentAreaFilled(false);
         btnReturn.addActionListener(this);
@@ -106,7 +105,7 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         });
         frame.add(btnReturn);
 
-        background = new JLabel(new ImageIcon("src/resources/img/background400x600.png"));
+        background = new JLabel(new ImageIcon("src/resources/img/background800x600.png"));
         background.setOpaque(true);
         background.setBounds(-10, 0, width, height);
         frame.add(background);
