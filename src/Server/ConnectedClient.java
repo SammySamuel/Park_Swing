@@ -253,6 +253,14 @@ public class ConnectedClient extends Thread {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
+            case getAllRaportStatus:
+                try {
+                    objectOutputStream.writeObject(DataManager.getAllRaportStatus());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 

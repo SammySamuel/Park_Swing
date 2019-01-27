@@ -1,4 +1,7 @@
-import Core.Pracownik;
+import Core.*;
+import Core.Client.Client;
+import Core.Client.ServerOperation;
+import ProjectPatterns.Observer.*;
 
 import javax.swing.*;
 import javax.swing.JOptionPane;
@@ -7,10 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TechnicalsScreen extends JFrame implements ActionListener {
 
+
+    ArrayList<Raport> raportList = null;
     /**
      * glowny screen - logowanie do panelu admina
      */
@@ -41,6 +47,28 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loadRaportList();
+
+        Client client = new Client("localhost", 4821);
+        ClientManager clientManager = new ClientManager();
+
+        RaportSubject subject= new RaportSubject();
+        ElectricObserver electric= new ElectricObserver();
+        MechanicObserver mechanic= new MechanicObserver();
+        SoftwareObserver ipspecialist= new SoftwareObserver();
+        AllObserver unknow=new AllObserver();
+
+        subject.registerObserver(electric);
+        subject.registerObserver(mechanic);
+        subject.registerObserver(ipspecialist);
+        subject.registerObserver(unknow);
+
+        TypPracownika typP = null;
+        TypAwarii typA = null;
+
+        for(Raport r: raportList){
+            subject.reportRaport(pracownik.getIdTyp(),r.getId_typ_awarii());
+        }
 
         btnLogin = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
         btnLogin.setBounds(100, 380, 160, 56);
@@ -136,6 +164,13 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    }
+
+    void loadRaportList(){
+        Client client = new Client("localhost", 4821);
+        ClientManager clientManager = new ClientManager();
+
+        raportList = (ArrayList<Raport>)ClientManager.clientSender.sendToServer(ServerOperation.getAllRaportStatus,null);
     }
 
 

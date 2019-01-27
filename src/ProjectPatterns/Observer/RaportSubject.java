@@ -24,7 +24,7 @@ public class RaportSubject {
             observer.update(currenttypPracownika,currenttypAwarii);
         }
     }
-    void reportRaport( int typPracownika, int typAwarii)
+    public void reportRaport(int typPracownika, int typAwarii)
     {
         this.currenttypPracownika=typPracownika;
         this.currenttypAwarii=typAwarii;

@@ -10,7 +10,7 @@ public enum ServerOperation {
     getReportRaport,
     getPlan, getTypAwarii, getOneDayPlanList, takeRaport,
     getStanowisko, getWeekPlanList,
-    getAllRaport
+    getAllRaportStatus, getAllRaport
 
 
 }
