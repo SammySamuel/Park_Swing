@@ -6,7 +6,7 @@ public enum ServerOperation {
     addPracownik, getPracownik, getSPracownik, howManyPracownik, getPracownikToList, removeUserFromBase,
     addAttraction, getAttraction, getAttractionToList,
     getRaport, addRaport,getUnimplementedRaport,updateStatusRaport,getReportRaport,takeRaport,
-    addPlan,getPlan,
+    addPlan,getPlan,getOneDayPlanList,
     getTypPracownika,
     getTypAwarii,
 

@@ -223,6 +223,14 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getOneDayPlanList:
+                id = (Integer)object;
+                try {
+                    objectOutputStream.writeObject(DataManager.getOneDayPlanList(id));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
 
         }
     }
