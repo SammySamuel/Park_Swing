@@ -76,14 +76,16 @@ public class AquaparkScreen extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
                 AquaparkTicket ticket =new StandardAquaparkTicket();
-                if(saunaTicket.isBorderPaintedFlat()==true)
+
+                if(saunaTicket.isSelected())
                     ticket=new SaunasZone(ticket);
-                if(slidesTicket.isBorderPaintedFlat()==true)
+                if(slidesTicket.isSelected())
                     ticket = new SlidesZone(ticket);
-                if (funTicket.isBorderPaintedFlat()==true)
+                if (funTicket.isSelected())
                     ticket = new FunZone(ticket);
-                if(discountTicket.isBorderPaintedFlat()==true)
+                if(discountTicket.isSelected())
                     ticket = new Discount(ticket);
 
                 System.out.println("Opis biletu: "+ ticket.getter_permissions());
