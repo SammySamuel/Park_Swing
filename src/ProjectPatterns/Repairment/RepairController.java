@@ -3,8 +3,6 @@ package ProjectPatterns.Repairment;
 public class RepairController {
     public String typAncient;
 
-
-
     public  RepairController(String typAncient) {
         this.typAncient = typAncient;
     }

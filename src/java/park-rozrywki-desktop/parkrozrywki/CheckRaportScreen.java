@@ -129,6 +129,7 @@ public class CheckRaportScreen extends JFrame implements ActionListener {
         Pracownik pr = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,rap.getId_pracownika());
         TypPracownika tp = (TypPracownika)ClientManager.clientSender.sendToServer(ServerOperation.getTypPracownika,pr.getIdTyp());
         RepairController rc = new RepairController(tp.getTyp());
+        rc.repair();
 
         ClientManager.clientSender.sendToServer(ServerOperation.updateStatusRaport,id);
 
