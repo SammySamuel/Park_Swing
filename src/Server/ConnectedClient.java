@@ -164,8 +164,16 @@ public class ConnectedClient extends Thread {
                     e.printStackTrace();
                 }
                 break;
+            case getPlan:
+                int typ = (Integer) object;
+                try {
+                    objectOutputStream.writeObject(DataManager.getPlan(typ));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
             case getUnimplementedRaport:
-                int typ = (Integer)object;
+                 typ = (Integer)object;
                 try {
                     objectOutputStream.writeObject(DataManager.getUnimplementedRaport(typ));
                 } catch (IOException e) {
@@ -203,6 +211,14 @@ public class ConnectedClient extends Thread {
                 DataManager.takeRaport(idrap);
                 try {
                     objectOutputStream.writeObject("cos");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case getTypAwarii:
+                id = (Integer)object;
+                try {
+                    objectOutputStream.writeObject(DataManager.getTypAwarii(id));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -1,9 +1,6 @@
+import Core.*;
 import Core.Client.Client;
 import Core.Client.ServerOperation;
-import Core.ClientManager;
-import Core.Pracownik;
-import Core.Raport;
-import Core.TypPracownika;
 import ProjectPatterns.Repairment.RepairController;
 
 import javax.swing.*;
@@ -50,11 +47,23 @@ public class RepairScreen extends JFrame implements ActionListener {
         model.addRow(headers);
 
 
+        Client client = new Client("localhost", 4821);
+        ClientManager clientManager = new ClientManager();
+        TypAwarii awarii = null;
+        Atrakcje atrakcje = null;
+        Pracownik pracownik1 = null;
 
         for(Raport r: raportArrayList){
+            awarii = (TypAwarii)ClientManager.clientSender.sendToServer(ServerOperation.getTypAwarii,r.getId_typ_awarii());
+            atrakcje = (Atrakcje)ClientManager.clientSender.sendToServer(ServerOperation.getAttraction,r.getId_atrakcji());
+            pracownik1 = (Pracownik)ClientManager.clientSender.sendToServer(ServerOperation.getPracownik,r.getId_pracownika());
             model.addRow(
                     new Object[]{
-                            r.getId_raport(),r.getId_pracownika(),r.getId_atrakcji(),r.getId_typ_awarii(),r.getOpis()
+                            r.getId_raport(),
+                            pracownik1.getLogin(),
+                            atrakcje.getNazwa_atrakcji(),
+                            awarii.getNazwa(),
+                            r.getOpis()
                     }
             );
         }

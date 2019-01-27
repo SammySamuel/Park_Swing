@@ -408,4 +408,23 @@ public class DataManager {
 
         return tp;
     }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    public static Object getTypAwarii(int id){
+        String sql = "SELECT * FROM TYP_AWARII WHERE id_typ_awarii = " + id +" ";
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+
+        TypAwarii awarii = null;
+        try {
+            rs.next();
+            awarii = new TypAwarii(
+                    rs.getInt("id_typ_awarii"),
+                    rs.getString("nazwa_typ_awarii")
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return awarii;
+    }
 }
