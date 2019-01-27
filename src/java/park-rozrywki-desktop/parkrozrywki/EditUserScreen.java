@@ -64,7 +64,7 @@ public class EditUserScreen extends JFrame implements ActionListener {
         frame.add(Prac);
 
 
-        btnAdd = new JButton(new ImageIcon("src/resources/img/btnAdd.png"));
+        btnAdd = new JButton(new ImageIcon("src/resources/img/btnRemove.png"));
         btnAdd.setBounds(20, 450, 160, 56);
         btnAdd.setBorderPainted(false);
         btnAdd.setContentAreaFilled(false);
