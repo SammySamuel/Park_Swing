@@ -90,6 +90,8 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                new WeekPlanScreen(pracownik);
+                frame.setVisible(false);
                 frame.dispose();
             }
         });
@@ -105,6 +107,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 new NewRaportScreen(pracownik);
+                frame.setVisible(false);
                 frame.dispose();
             }
         });

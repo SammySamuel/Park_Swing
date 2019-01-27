@@ -98,7 +98,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 new OneDayPlanScreen(pracownik);
-                frame.setVisible(true);
+                frame.setVisible(false);
                 frame.dispose();
             }
         });
@@ -114,7 +114,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 new WeekPlanScreen(pracownik);
-                frame.setVisible(true);
+                frame.setVisible(false);
                 frame.dispose();
             }
         });

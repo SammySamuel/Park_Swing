@@ -66,8 +66,13 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                new TechnicalsScreen(pracownik);
+                if(pracownik.getIdTyp()==3) {
+                    new ServiceWorkerScreen(pracownik);
+                }else {
+                    new TechnicalsScreen(pracownik);
+                }
                 frame.setVisible(false);
+                frame.dispose();
             }
         });
         frame.add(btnReturn);

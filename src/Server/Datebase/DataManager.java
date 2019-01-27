@@ -405,32 +405,54 @@ public class DataManager {
         return ilosc;
     }
 
-    public static  ArrayList<Plany> getOneDayPlanList(int id){
+    public static  ArrayList<Plany> getOneDayPlanList(int id) {
         ArrayList<Plany> planyArrayList = new ArrayList<Plany>();
         int number = howManyRaports();
 
-        String sql = "SELECT * FROM plany WHERE id_pracownika = " +id + " AND data=(SELECT TO_Date(sysdate) FROM DUAL)";
+        String sql = "SELECT * FROM plany WHERE id_pracownika = " + id + " AND data=(SELECT TO_Date(sysdate) FROM DUAL)";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
 
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
         Plany p = null;
-        for(int i = 0;i<number;i++){
+        for (int i = 0; i < number; i++) {
             try {
                 rs.next();
-                p = new Plany(
-                        rs.getInt("id_planu"),
-                        rs.getInt("id_pracownika"),
-                        rs.getInt("id_stanowiska"),
-                        rs.getInt("id_atrakcji"),
-                        df.format(rs.getDate("data"))
-                );
+                p = new Plany(rs.getInt("id_planu"), rs.getInt("id_pracownika"), rs.getInt("id_stanowiska"), rs.getInt("id_atrakcji"), df.format(rs.getDate("data")));
                 planyArrayList.add(p);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         return planyArrayList;
+    }
+
+    public static  ArrayList<Plany> getWeekPlanList(int id){
+            ArrayList<Plany> planyArrayList = new ArrayList<Plany>();
+            int number = howManyRaports();
+
+            String sql = "SELECT * FROM plany WHERE id_pracownika = " +id + " AND data BETWEEN (SELECT TO_Date(sysdate) FROM DUAL) AND (SELECT TO_Date(sysdate+7) FROM DUAL)";
+            ResultSet rs = DatebaseConnector.getResultSet(sql);
+
+            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+
+            Plany p = null;
+            for(int i = 0;i<number;i++){
+                try {
+                    rs.next();
+                    p = new Plany(
+                            rs.getInt("id_planu"),
+                            rs.getInt("id_pracownika"),
+                            rs.getInt("id_stanowiska"),
+                            rs.getInt("id_atrakcji"),
+                            df.format(rs.getDate("data"))
+                    );
+                    planyArrayList.add(p);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            return planyArrayList;
     }
 
 
