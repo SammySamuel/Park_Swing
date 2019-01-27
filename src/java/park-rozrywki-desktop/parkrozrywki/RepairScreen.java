@@ -58,7 +58,7 @@ public class RepairScreen extends JFrame implements ActionListener {
                     }
             );
         }
-        jTable.setBounds(30,100,700,50);
+        jTable.setBounds(30,100,700,300);
         frame.add(jTable);
 
         btnAdd = new JButton(new ImageIcon("src/resources/img/btnAdd.png"));
@@ -115,7 +115,18 @@ public class RepairScreen extends JFrame implements ActionListener {
         Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
 
-        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.getUnimplementedRaport, pracownik.getIdTyp());
+        int idT = 0;
+        if (pracownik.getIdTyp() == 4) {
+            idT = 1;
+        }
+        if (pracownik.getIdTyp() == 5) {
+            idT = 2;
+        }
+        if (pracownik.getIdTyp() == 6) {
+            idT = 3;
+        }
+
+        raportArrayList = (ArrayList<Raport>) ClientManager.clientSender.sendToServer(ServerOperation.getUnimplementedRaport, idT);
     }
 
     void doRapair(int id){

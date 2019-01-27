@@ -251,7 +251,7 @@ public class DataManager {
         ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
         int number = howManyRaports();
 
-        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'przyjety'";
+        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'przyjety' AND id_typ_awarii = " + typ +" ";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
         Raport r = null;
 
@@ -272,6 +272,28 @@ public class DataManager {
                 e.printStackTrace();
             }
         }
+
+        sql = " SELECT * FROM RAPORT WHERE STATUS = 'przyjety' AND id_typ_awarii = 4";
+        rs = DatebaseConnector.getResultSet(sql);
+
+        for (int ii = 0; ii < number; ii++) {
+            try {
+                rs.next();
+                r = new Raport(
+                        rs.getInt("id_raport"),
+                        rs.getInt("id_pracownika"),
+                        rs.getInt("id_atrakcji"),
+                        rs.getInt("id_typ_awarii"),
+                        rs.getString("opis"),
+                        rs.getString("status")
+                );
+                raportArrayList.add(r);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         return raportArrayList;
 
     }
@@ -280,20 +302,49 @@ public class DataManager {
         ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
         int number = howManyRaports();
 
-        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'zgloszony'";
+        String sql = " SELECT * FROM RAPORT WHERE STATUS = 'zgloszony' AND id_typ_awarii = " + typ +" ";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
         Raport r = null;
 
         for (int i = 0; i < number; i++) {
             try {
                 rs.next();
-                r = new Raport(rs.getInt("id_raport"), rs.getInt("id_pracownika"), rs.getInt("id_atrakcji"), rs.getInt("id_typ_awarii"), rs.getString("opis"), rs.getString("status"));
+                r = new Raport(
+                        rs.getInt("id_raport"),
+                        rs.getInt("id_pracownika"),
+                        rs.getInt("id_atrakcji"),
+                        rs.getInt("id_typ_awarii"),
+                        rs.getString("opis"),
+                        rs.getString("status")
+                );
                 raportArrayList.add(r);
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+
+        sql = " SELECT * FROM RAPORT WHERE STATUS = 'zgloszony' AND id_typ_awarii = 4";
+        rs = DatebaseConnector.getResultSet(sql);
+
+        for (int ii = 0; ii < number; ii++) {
+            try {
+                rs.next();
+                r = new Raport(
+                        rs.getInt("id_raport"),
+                        rs.getInt("id_pracownika"),
+                        rs.getInt("id_atrakcji"),
+                        rs.getInt("id_typ_awarii"),
+                        rs.getString("opis"),
+                        rs.getString("status")
+                );
+                raportArrayList.add(r);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         return raportArrayList;
     }
     public static void updateStatusRaport(int id_raport){
