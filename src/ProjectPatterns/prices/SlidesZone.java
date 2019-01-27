@@ -1,6 +1,6 @@
 package ProjectPatterns.prices;
 
-class SlidesZone extends TicketDecorator {
+public class SlidesZone extends TicketDecorator {
 
     public SlidesZone(AquaparkTicket ticket){
         super(ticket);

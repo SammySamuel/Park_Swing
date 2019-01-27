@@ -1,6 +1,6 @@
 package ProjectPatterns.prices;
 
-interface AquaparkTicket {
+public interface AquaparkTicket {
 
     String getter_permissions();
 

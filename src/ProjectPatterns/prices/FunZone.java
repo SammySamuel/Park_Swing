@@ -1,6 +1,6 @@
 package ProjectPatterns.prices;
 
-class FunZone extends TicketDecorator {
+public class FunZone extends TicketDecorator {
 
     public FunZone(AquaparkTicket ticket){
         super(ticket);

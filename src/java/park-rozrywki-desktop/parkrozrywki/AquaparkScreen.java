@@ -3,6 +3,7 @@ import Core.Client.Client;
 import Core.Client.ServerOperation;
 import Core.ClientManager;
 import Core.Pracownik;
+import ProjectPatterns.prices.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,6 +76,16 @@ public class AquaparkScreen extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                AquaparkTicket ticket =new StandardAquaparkTicket();
+                if(saunaTicket.isBorderPaintedFlat()==true)
+                    ticket=new SaunasZone(ticket);
+                if(slidesTicket.isBorderPaintedFlat()==true)
+                    ticket = new SlidesZone(ticket);
+                if (funTicket.isBorderPaintedFlat()==true)
+                    ticket = new FunZone(ticket);
+                if(discountTicket.isBorderPaintedFlat()==true)
+                    ticket = new Discount(ticket);
+
                 JOptionPane.showMessageDialog(null, "Nastepuje drukowanie biletu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
