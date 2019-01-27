@@ -378,7 +378,7 @@ public class DataManager {
     {
         ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
         int number = howManyRaports();
-        String sql = " SELECT * FROM RAPORT WHERE status ='agloszony'";
+        String sql = " SELECT * FROM RAPORT WHERE status ='zgloszony'";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
         Raport r = null;
 

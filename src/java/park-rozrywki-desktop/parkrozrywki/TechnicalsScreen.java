@@ -63,11 +63,11 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         subject.registerObserver(ipspecialist);
         subject.registerObserver(unknow);
 
-        TypPracownika typP = null;
-        TypAwarii typA = null;
 
         for(Raport r: raportList){
-            subject.reportRaport(pracownik.getIdTyp(),r.getId_typ_awarii());
+            if(r.getStatus().equals("zgloszony")) {
+                subject.reportRaport(pracownik.getIdTyp(), r.getId_typ_awarii());
+            }
         }
 
         btnLogin = new JButton((new ImageIcon("src/resources/img/btnLogout.png")));
@@ -170,7 +170,7 @@ public class TechnicalsScreen extends JFrame implements ActionListener {
         Client client = new Client("localhost", 4821);
         ClientManager clientManager = new ClientManager();
 
-        raportList = (ArrayList<Raport>)ClientManager.clientSender.sendToServer(ServerOperation.getAllRaportStatus,null);
+        raportList = (ArrayList<Raport>)ClientManager.clientSender.sendToServer(ServerOperation.getAllRaport,null);
     }
 
 

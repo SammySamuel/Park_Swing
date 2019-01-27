@@ -46,12 +46,6 @@ public class AquaparkScreen extends JFrame implements ActionListener {
         lText.setSize(400, 40);
         frame.add(lText);
 
-        lText = new JLabel();
-        lText.setText("Z taka konfiguracja, Twój bilet będzie kosztował:");
-        lText.setFont(lText.getFont().deriveFont(16.0f));
-        lText.setLocation(75, 400);
-        lText.setSize(500, 40);
-        frame.add(lText);
 
         btnReturn = new JButton(new ImageIcon("src/resources/img/btnReturn.png"));
         btnReturn.setBounds(120, 600, 160, 56);
