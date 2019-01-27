@@ -235,6 +235,50 @@ public class DataManager {
         return raport;
     }
 
+    public static int howManyRaports() {
+        String sql = "SELECT COUNT(*) AS count from RAPORT";
+        ResultSet resultSet = DatebaseConnector.getResultSet(sql);
+        int ilosc = 0;
+        try {
+            while (resultSet.next()) {
+                ilosc = (resultSet.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ilosc;
+    }
+
+    public static ArrayList<Raport> getUnimplementedRaport(int typ) {
+        ArrayList<Raport> raportArrayList = new ArrayList<Raport>();
+        int number = howManyRaports();
+
+        String sql = " SELECT * FROM RAPORT WHERE status = 'zgloszony' AND ";////////////zapytanie o połaczone relacje miedzy tabela pracownik a raport
+        ResultSet rs = DatebaseConnector.getResultSet(sql);
+        Raport r = null;
+
+        for (int i = 0; i < number; i++) {
+            try {
+                rs.next();
+                r = new Raport(
+                        rs.getInt("id_raport"),
+                        rs.getInt("id_pracownik"),
+                        rs.getInt("id_atrakcji"),
+                        rs.getInt("id_typ_awarii"),
+                        rs.getString("opis"),
+                        rs.getString("status")
+                );
+                raportArrayList.add(r);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return raportArrayList;
+
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////
     public static void addPlan(Plany plan) {
         String sql = ("INSERT INTO Plany (id_planu,id_pracownika,id_stanowiska,id_atrakcji,data) VALUES(sekwencja_plany.nextval,"
