@@ -409,7 +409,7 @@ public class DataManager {
         ArrayList<Plany> planyArrayList = new ArrayList<Plany>();
         int number = howManyRaports();
 
-        String sql = "SELECT * FROM plany WHERE plany.id_pracownika = " +id + " AND plany.data=(SELECT TO_Date(sysdate) FROM DUAL);";
+        String sql = "SELECT * FROM plany WHERE id_pracownika = " +id + " AND data=(SELECT TO_Date(sysdate) FROM DUAL)";
         ResultSet rs = DatebaseConnector.getResultSet(sql);
 
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");

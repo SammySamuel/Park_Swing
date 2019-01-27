@@ -20,7 +20,6 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
     static final int width = 800;
     static final int height = 600;
 
-    private JButton btnAdd;
     private JButton btnReturn;
 
     private JTable jTable;
