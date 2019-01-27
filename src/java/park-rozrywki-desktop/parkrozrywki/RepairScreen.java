@@ -41,7 +41,7 @@ public class RepairScreen extends JFrame implements ActionListener {
         jTable = new JTable();
         model.setColumnIdentifiers(headers);
         jTable.setModel(model);
-        scroll = new JScrollPane(jTable);
+        scroll = new JScrollPane(jTable,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 
 

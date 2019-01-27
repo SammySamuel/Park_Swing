@@ -10,7 +10,6 @@ public enum ServerOperation {
     getTypPracownika,
     getTypAwarii,
     getStanowisko,
-    getAllRaport
-
+    getAllRaport,
 
 }

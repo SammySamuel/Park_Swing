@@ -61,7 +61,7 @@ public class AllRaportScreen extends JFrame implements ActionListener
             );
         }
         jTable.setBounds(40,140,700,300);
-        scroll = new JScrollPane(jTable);
+        scroll = new JScrollPane(jTable,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setLocation(40,148);
         scroll.setSize(700,300);
         frame.add(scroll);

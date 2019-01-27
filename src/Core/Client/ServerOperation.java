@@ -12,4 +12,5 @@ public enum ServerOperation {
     getStanowisko, getWeekPlanList,
     getAllRaport
 
+
 }

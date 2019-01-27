@@ -186,8 +186,6 @@ public class DataManager {
                         rs.getString("nazwa_atrakcji"),
                         rs.getDouble("cena_idywidualna"),
                         rs.getDouble("cena_grupowa"),
-                        /*null,
-                        null);*/
                         df.format(rs.getDate("data_otwarcia")),
                         df.format(rs.getDate("data_zamkniecia")));
                 atrakcje.add(at);
