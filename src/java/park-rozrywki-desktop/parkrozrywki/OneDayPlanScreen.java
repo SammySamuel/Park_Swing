@@ -51,8 +51,9 @@ public class OneDayPlanScreen extends JFrame implements ActionListener {
             stanowisko = (Stanowisko)ClientManager.clientSender.sendToServer(ServerOperation.getStanowisko,p.getId_stanowiska());
             model.addRow(
                     new Object[]{
-                            atrakcje.getNazwa_atrakcji(),
                             stanowisko.getNazwa(),
+                            atrakcje.getNazwa_atrakcji(),
+
                             p.getData()
                     }
             );

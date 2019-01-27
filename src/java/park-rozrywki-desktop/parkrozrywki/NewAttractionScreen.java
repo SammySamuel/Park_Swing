@@ -168,7 +168,6 @@ public class NewAttractionScreen extends JFrame implements ActionListener {
                 new NewAttractionScreen();
                 frame.dispose();
                 frame.setVisible(false);
-                new AdminScreen();
             }
         });
         frame.add(btnAdd);
