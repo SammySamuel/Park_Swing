@@ -86,6 +86,9 @@ public class AquaparkScreen extends JFrame implements ActionListener {
                 if(discountTicket.isBorderPaintedFlat()==true)
                     ticket = new Discount(ticket);
 
+                System.out.println("Opis biletu: "+ ticket.getter_permissions());
+                System.out.println("Cena biletu: "+ ticket.getter_price());
+
                 JOptionPane.showMessageDialog(null, "Nastepuje drukowanie biletu!", "Notyfikator", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
             }
