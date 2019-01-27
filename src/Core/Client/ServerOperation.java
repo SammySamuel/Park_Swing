@@ -7,5 +7,7 @@ public enum ServerOperation {
     getRaport, addRaport,getUnimplementedRaport,
     addPlan,
     getTypPracownika, updateStatusRaport,
+    getReportRaport,
+    takeRaport
 
 }
