@@ -123,7 +123,7 @@ public class AquaparkScreen extends JFrame implements ActionListener {
 
         background = new JLabel(new ImageIcon("src/resources/img/main_background.png"));
         background.setOpaque(true);
-        background.setBounds(-10, -10, width, height);
+        background.setBounds(0, -10, width, height);
         frame.add(background);
 
         frame.setVisible(true);

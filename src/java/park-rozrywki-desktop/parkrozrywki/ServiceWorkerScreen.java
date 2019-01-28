@@ -116,7 +116,7 @@ public class ServiceWorkerScreen extends JFrame implements ActionListener {
 
         background = new JLabel(new ImageIcon("src/resources/img/background.png"));
         background.setOpaque(true);
-        background.setBounds(-10, 0, width, height);
+        background.setBounds(0, 0, width, height);
         frame.add(background);
 
         frame.setVisible(true);
